@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-09T20:34:26Z",
+  "generatedAt": "2026-02-09T21:36:52Z",
   "photos": [
     {
       "id": "2025-12-14_3-dsc01709",
@@ -28,20 +28,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "event": [
-          "areeb"
-        ],
-        "camera": [
-          "ilce-7m2"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "areeb",
+        "ilce-7m2"
+      ]
     },
     {
       "id": "2025-12-14_4-dsc01707",
@@ -69,20 +61,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "event": [
-          "areeb"
-        ],
-        "camera": [
-          "ilce-7m2"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "areeb",
+        "ilce-7m2"
+      ]
     },
     {
       "id": "2025-12-14_6-dsc01678",
@@ -110,20 +94,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "areeb"
-        ],
-        "camera": [
-          "ilce-7m2"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "areeb",
+        "ilce-7m2"
+      ]
     },
     {
       "id": "2026-01-11_dscf1311",
@@ -151,17 +127,11 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "finepix-ax650"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "finepix-ax650"
+      ]
     },
     {
       "id": "2026-01-11_dscf1329",
@@ -189,17 +159,11 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "finepix-ax650"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "finepix-ax650"
+      ]
     },
     {
       "id": "2026-01-11_dscf1340",
@@ -227,17 +191,11 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "finepix-ax650"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "finepix-ax650"
+      ]
     },
     {
       "id": "2026-01-08_dscf1356",
@@ -265,20 +223,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "finepix-ax650"
-        ],
-        "misc": [
-          "concert"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "finepix-ax650",
+        "concert"
+      ]
     },
     {
       "id": "2026-01-08_dscf1361",
@@ -306,20 +256,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "finepix-ax650"
-        ],
-        "misc": [
-          "concert"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "finepix-ax650",
+        "concert"
+      ]
     },
     {
       "id": "2026-01-08_dscf1365",
@@ -347,17 +289,11 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "finepix-ax650"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "finepix-ax650"
+      ]
     },
     {
       "id": "2026-01-09_dscf1367",
@@ -385,17 +321,11 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "finepix-ax650"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "finepix-ax650"
+      ]
     },
     {
       "id": "2026-01-01_dscf1373",
@@ -423,17 +353,11 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "finepix-ax650"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "finepix-ax650"
+      ]
     },
     {
       "id": "2026-01-01_dscf1379",
@@ -461,17 +385,11 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "finepix-ax650"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "finepix-ax650"
+      ]
     },
     {
       "id": "2025-09-19_dscf2848",
@@ -499,17 +417,11 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-09-27_dscf2862",
@@ -537,20 +449,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-09-27_dscf2872",
@@ -578,20 +482,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-09-27_dscf2881",
@@ -619,20 +515,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-09-27_dscf2887",
@@ -660,20 +548,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-09-27_dscf2889",
@@ -701,21 +581,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike",
-          "macro"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike",
+        "macro"
+      ]
     },
     {
       "id": "2025-09-27_dscf2904",
@@ -743,20 +615,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-09-27_dscf2908",
@@ -784,21 +648,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike",
-          "slow-shutter"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike",
+        "slow-shutter"
+      ]
     },
     {
       "id": "2025-09-27_dscf2917",
@@ -826,20 +682,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-10-08_dscf2956",
@@ -867,20 +715,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "self"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "self"
+      ]
     },
     {
       "id": "2025-10-08_dscf2971",
@@ -908,21 +748,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "self",
-          "slow-shutter"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "self",
+        "slow-shutter"
+      ]
     },
     {
       "id": "2025-10-08_dscf2973",
@@ -950,21 +782,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "self",
-          "slow-shutter"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "self",
+        "slow-shutter"
+      ]
     },
     {
       "id": "2025-10-08_dscf2979",
@@ -992,21 +816,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "self",
-          "slow-shutter"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "self",
+        "slow-shutter"
+      ]
     },
     {
       "id": "2025-10-11_dscf2989",
@@ -1034,20 +850,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-10-11_dscf3007",
@@ -1075,20 +883,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-10-11_dscf3026",
@@ -1116,20 +916,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-10-11_dscf3039",
@@ -1157,20 +949,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-10-11_dscf3063",
@@ -1198,20 +982,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-10-19_dscf3073",
@@ -1239,20 +1015,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-10-19_dscf3075",
@@ -1280,20 +1048,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-10-19_dscf3091",
@@ -1321,20 +1081,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-10-19_dscf3103",
@@ -1362,20 +1114,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "hike"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "hike"
+      ]
     },
     {
       "id": "2025-10-24_dscf3292",
@@ -1403,21 +1147,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "self",
-          "slow-shutter"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "self",
+        "slow-shutter"
+      ]
     },
     {
       "id": "2025-10-25_dscf3396",
@@ -1445,20 +1181,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "central-park-climbing"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "central-park-climbing",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-10-25_dscf3400",
@@ -1486,20 +1214,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "central-park-climbing"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "central-park-climbing",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-10-25_dscf3410",
@@ -1527,20 +1247,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "central-park-climbing"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "central-park-climbing",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-10-25_dscf3411",
@@ -1568,20 +1280,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "central-park-climbing"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "central-park-climbing",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-10-25_dscf3416",
@@ -1609,20 +1313,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "central-park-climbing"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "central-park-climbing",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-10-25_dscf3417",
@@ -1650,20 +1346,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "central-park-climbing"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "central-park-climbing",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-10-25_dscf3429",
@@ -1691,20 +1379,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "central-park-climbing"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "central-park-climbing",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-10-25_dscf3432",
@@ -1732,20 +1412,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "central-park-climbing"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "central-park-climbing",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-10-25_dscf3437",
@@ -1773,20 +1445,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "central-park-climbing"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "central-park-climbing",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-10-25_dscf3440",
@@ -1814,20 +1478,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "event": [
-          "central-park-climbing"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "central-park-climbing",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-11-14_dscf3548",
@@ -1855,20 +1511,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "event": [
-          "priya-rahul-wedding"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "priya-rahul-wedding",
+        "x-t20"
+      ]
     },
     {
       "id": "2025-11-22_dscf3736",
@@ -1896,20 +1544,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "self"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "self"
+      ]
     },
     {
       "id": "2025-12-14_dscf3966",
@@ -1937,20 +1577,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-14_dscf3998",
@@ -1978,20 +1610,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-14_dscf4007",
@@ -2019,20 +1643,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-14_dscf4012",
@@ -2060,20 +1676,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-14_dscf4019",
@@ -2101,20 +1709,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-14_dscf4025",
@@ -2142,20 +1742,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-14_dscf4033",
@@ -2183,20 +1775,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-14_dscf4070",
@@ -2224,20 +1808,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-14_dscf4074",
@@ -2265,20 +1841,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-14_dscf4079",
@@ -2306,20 +1874,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-15_dscf4112",
@@ -2347,21 +1907,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "concert",
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "concert",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-15_dscf4114",
@@ -2389,21 +1941,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "concert",
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "concert",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-15_dscf4153",
@@ -2431,21 +1975,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc",
-          "concert"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc",
+        "concert"
+      ]
     },
     {
       "id": "2025-12-15_dscf4160",
@@ -2473,21 +2009,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "concert",
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "concert",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-15_dscf4165",
@@ -2515,21 +2043,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "concert",
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "concert",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-15_dscf4169",
@@ -2557,21 +2077,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "concert",
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "concert",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-18_dscf4260",
@@ -2599,20 +2111,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-18_dscf4267",
@@ -2640,20 +2144,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-18_dscf4269",
@@ -2681,20 +2177,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-18_dscf4278",
@@ -2722,21 +2210,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "slow-shutter",
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "slow-shutter",
+        "nyc"
+      ]
     },
     {
       "id": "2025-12-24_dscf4291",
@@ -2764,20 +2244,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "slow-shutter"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "slow-shutter"
+      ]
     },
     {
       "id": "2025-12-24_dscf4301",
@@ -2805,20 +2277,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "slow-shutter"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "slow-shutter"
+      ]
     },
     {
       "id": "2025-12-24_dscf4322",
@@ -2846,20 +2310,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "slow-shutter"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "slow-shutter"
+      ]
     },
     {
       "id": "2025-12-24_dscf4328",
@@ -2887,20 +2343,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "slow-shutter"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "slow-shutter"
+      ]
     },
     {
       "id": "2025-12-31_dscf4379",
@@ -2928,20 +2376,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "self"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "self"
+      ]
     },
     {
       "id": "2026-01-24_dscf4383",
@@ -2969,20 +2409,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "self"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "x-t20",
+        "self"
+      ]
     },
     {
       "id": "2026-01-24_dscf4385",
@@ -3010,17 +2442,11 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20"
+      ]
     },
     {
       "id": "2026-02-04_dscf4393",
@@ -3048,20 +2474,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2026-02-04_dscf4396",
@@ -3089,20 +2507,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2026-02-04_dscf4400",
@@ -3130,20 +2540,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2026-02-04_dscf4409",
@@ -3171,20 +2573,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2026-02-04_dscf4412",
@@ -3212,20 +2606,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2026-02-04_dscf4416",
@@ -3253,20 +2639,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2026-02-04_dscf4419",
@@ -3294,20 +2672,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "x-t20"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "x-t20",
+        "nyc"
+      ]
     },
     {
       "id": "2025-10-07_img-2766",
@@ -3335,21 +2705,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "iphone-15-pro"
-        ],
-        "misc": [
-          "self",
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "iphone-15-pro",
+        "self",
+        "nyc"
+      ]
     },
     {
       "id": "2025-11-13_img-2869",
@@ -3377,20 +2739,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "iphone-15-pro"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "iphone-15-pro",
+        "nyc"
+      ]
     },
     {
       "id": "2025-11-13_img-2870",
@@ -3418,20 +2772,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "iphone-15-pro"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "iphone-15-pro",
+        "nyc"
+      ]
     },
     {
       "id": "2025-11-21_img-2891",
@@ -3459,20 +2805,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "iphone-15-pro"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "iphone-15-pro",
+        "nyc"
+      ]
     },
     {
       "id": "2025-11-22_img-2896",
@@ -3500,20 +2838,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "iphone-15-pro"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "iphone-15-pro",
+        "nyc"
+      ]
     },
     {
       "id": "2025-11-22_img-2902",
@@ -3541,20 +2871,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "iphone-15-pro"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "iphone-15-pro",
+        "nyc"
+      ]
     },
     {
       "id": "2025-11-24_img-2920",
@@ -3582,20 +2904,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "camera": [
-          "iphone-15-pro"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "iphone-15-pro",
+        "nyc"
+      ]
     },
     {
       "id": "2026-01-20_img-3068",
@@ -3623,17 +2937,11 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "iphone-15-pro"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "iphone-15-pro"
+      ]
     },
     {
       "id": "2026-01-31_img-3081",
@@ -3661,20 +2969,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "camera": [
-          "iphone-15-pro"
-        ],
-        "misc": [
-          "self"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "iphone-15-pro",
+        "self"
+      ]
     },
     {
       "id": "2025-12-14_img-3477",
@@ -3702,23 +3002,13 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "bw"
-        ],
-        "event": [
-          "areeb"
-        ],
-        "camera": [
-          "ilce-7m2"
-        ],
-        "misc": [
-          "nyc"
-        ]
-      }
+      "tags": [
+        "digital",
+        "bw",
+        "areeb",
+        "ilce-7m2",
+        "nyc"
+      ]
     },
     {
       "id": "2025-10-24_composite-transparent-union",
@@ -3746,18 +3036,12 @@
         "caption": null,
         "location": null
       },
-      "tags": {
-        "medium": [
-          "digital"
-        ],
-        "color": [
-          "color"
-        ],
-        "misc": [
-          "slow-shutter",
-          "self"
-        ]
-      }
+      "tags": [
+        "digital",
+        "color",
+        "slow-shutter",
+        "self"
+      ]
     }
   ]
 }

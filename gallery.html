@@ -21,16 +21,24 @@
           </select>
         </label>
 
-        <label class="control">
-          <span>Filter (quick)</span>
-          <select id="quickFilter">
-            <option value="">All</option>
-            <option value="medium:digital">Digital</option>
-            <option value="medium:film">Film</option>
-            <option value="color:bw">B&W</option>
-            <option value="color:color">Color</option>
-          </select>
-        </label>
+        <div class="control">
+          <span>Match</span>
+          <div class="toggle">
+            <button id="modeAnd" class="togglebtn active" type="button">AND</button>
+            <button id="modeOr" class="togglebtn" type="button">OR</button>
+          </div>
+        </div>
+
+        <div class="control" style="min-width: 260px;">
+          <span>Tags</span>
+          <details id="tagDropdown" class="dropdown">
+            <summary id="tagSummary">Select tags…</summary>
+            <div id="tagList" class="dropdown-panel"></div>
+            <div class="dropdown-actions">
+              <button id="clearTagsBtn" class="button secondary" type="button">Clear</button>
+            </div>
+          </details>
+        </div>
       </div>
     </div>
   </header>
