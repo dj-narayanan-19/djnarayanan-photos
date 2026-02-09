@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">← Home</a>
+
+      <div class="controls">
+        <label class="control">
+          <span>Sort</span>
+          <select id="sortSelect">
+            <option value="date_desc" selected>Date (new → old)</option>
+            <option value="date_asc">Date (old → new)</option>
+            <option value="random">Random</option>
+          </select>
+        </label>
+
+        <label class="control">
+          <span>Filter (quick)</span>
+          <select id="quickFilter">
+            <option value="">All</option>
+            <option value="medium:digital">Digital</option>
+            <option value="medium:film">Film</option>
+            <option value="color:bw">B&W</option>
+            <option value="color:color">Color</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="status" class="status">Loading…</div>
+    <div id="grid" class="grid"></div>
+
+    <div class="loadmore-wrap">
+      <button id="loadMoreBtn" class="button secondary">Load more</button>
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
+    <button id="lbClose" class="lb-close" aria-label="Close">×</button>
+    <button id="lbPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
+    <img id="lbImg" class="lb-img" alt="" />
+    <button id="lbNext" class="lb-nav lb-next" aria-label="Next">›</button>
+    <div id="lbMeta" class="lb-meta"></div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
