@@ -196,7 +196,10 @@ function onKey(e) {
 
 function buildTagUI(tagIndex) {
   tagListEl.innerHTML = "";
-  const tags = tagIndex?.tags || [];
+
+  const tags = (tagIndex?.tags || [])
+    .slice()
+    .sort((a, b) => (b.count ?? 0) - (a.count ?? 0) || String(a.name).localeCompare(String(b.name)));
 
   for (const t of tags) {
     const row = document.createElement("div");
@@ -221,7 +224,7 @@ function buildTagUI(tagIndex) {
 
     const count = document.createElement("span");
     count.className = "tagcount";
-    count.textContent = String(t.count ?? "");
+    count.textContent = String(t.count ?? 0);
 
     row.appendChild(lab);
     row.appendChild(count);
