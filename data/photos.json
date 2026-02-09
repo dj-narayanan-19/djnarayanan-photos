@@ -1,5 +1,3763 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-09T00:00:00Z",
-  "photos": []
+  "generatedAt": "2026-02-09T20:34:26Z",
+  "photos": [
+    {
+      "id": "2025-12-14_3-dsc01709",
+      "source": {
+        "originalFilename": "3-DSC01709.jpeg",
+        "fingerprint": "size:24166388_mtime:1770667464"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_3-dsc01709.jpg",
+        "display": "assets/display/2025-12-14_3-dsc01709.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T19:02:00",
+        "cameraMake": "SONY",
+        "cameraModel": "ILCE-7M2",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "event": [
+          "areeb"
+        ],
+        "camera": [
+          "ilce-7m2"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_4-dsc01707",
+      "source": {
+        "originalFilename": "4-DSC01707.jpeg",
+        "fingerprint": "size:15892344_mtime:1770667463"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_4-dsc01707.jpg",
+        "display": "assets/display/2025-12-14_4-dsc01707.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T19:01:41",
+        "cameraMake": "SONY",
+        "cameraModel": "ILCE-7M2",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "event": [
+          "areeb"
+        ],
+        "camera": [
+          "ilce-7m2"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_6-dsc01678",
+      "source": {
+        "originalFilename": "6-DSC01678.jpeg",
+        "fingerprint": "size:2793887_mtime:1770667463"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_6-dsc01678.jpg",
+        "display": "assets/display/2025-12-14_6-dsc01678.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T18:57:55",
+        "cameraMake": "SONY",
+        "cameraModel": "ILCE-7M2",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "areeb"
+        ],
+        "camera": [
+          "ilce-7m2"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-11_dscf1311",
+      "source": {
+        "originalFilename": "DSCF1311.jpeg",
+        "fingerprint": "size:10149443_mtime:1770667467"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-11_dscf1311.jpg",
+        "display": "assets/display/2026-01-11_dscf1311.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-11T11:53:04",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "FinePix AX650",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "finepix-ax650"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-11_dscf1329",
+      "source": {
+        "originalFilename": "DSCF1329.jpeg",
+        "fingerprint": "size:14031528_mtime:1770667467"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-11_dscf1329.jpg",
+        "display": "assets/display/2026-01-11_dscf1329.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-11T12:59:04",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "FinePix AX650",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "finepix-ax650"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-11_dscf1340",
+      "source": {
+        "originalFilename": "DSCF1340.jpeg",
+        "fingerprint": "size:15444000_mtime:1770667467"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-11_dscf1340.jpg",
+        "display": "assets/display/2026-01-11_dscf1340.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-11T14:03:38",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "FinePix AX650",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "finepix-ax650"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-08_dscf1356",
+      "source": {
+        "originalFilename": "DSCF1356.jpeg",
+        "fingerprint": "size:2503352_mtime:1770667467"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-08_dscf1356.jpg",
+        "display": "assets/display/2026-01-08_dscf1356.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-08T05:40:45",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "FinePix AX650",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "finepix-ax650"
+        ],
+        "misc": [
+          "concert"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-08_dscf1361",
+      "source": {
+        "originalFilename": "DSCF1361.jpeg",
+        "fingerprint": "size:2423800_mtime:1770667467"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-08_dscf1361.jpg",
+        "display": "assets/display/2026-01-08_dscf1361.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-08T06:02:49",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "FinePix AX650",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "finepix-ax650"
+        ],
+        "misc": [
+          "concert"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-08_dscf1365",
+      "source": {
+        "originalFilename": "DSCF1365.jpeg",
+        "fingerprint": "size:7102635_mtime:1770667467"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-08_dscf1365.jpg",
+        "display": "assets/display/2026-01-08_dscf1365.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-08T10:31:41",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "FinePix AX650",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "finepix-ax650"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-09_dscf1367",
+      "source": {
+        "originalFilename": "DSCF1367.jpeg",
+        "fingerprint": "size:2549851_mtime:1770667467"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-09_dscf1367.jpg",
+        "display": "assets/display/2026-01-09_dscf1367.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-09T01:41:34",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "FinePix AX650",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "finepix-ax650"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-01_dscf1373",
+      "source": {
+        "originalFilename": "DSCF1373.jpeg",
+        "fingerprint": "size:7802439_mtime:1770667466"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-01_dscf1373.jpg",
+        "display": "assets/display/2026-01-01_dscf1373.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-01T00:12:25",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "FinePix AX650",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "finepix-ax650"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-01_dscf1379",
+      "source": {
+        "originalFilename": "DSCF1379.jpeg",
+        "fingerprint": "size:2892622_mtime:1770667466"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-01_dscf1379.jpg",
+        "display": "assets/display/2026-01-01_dscf1379.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-01T00:30:11",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "FinePix AX650",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "finepix-ax650"
+        ]
+      }
+    },
+    {
+      "id": "2025-09-19_dscf2848",
+      "source": {
+        "originalFilename": "DSCF2848.jpeg",
+        "fingerprint": "size:20262814_mtime:1770667454"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-09-19_dscf2848.jpg",
+        "display": "assets/display/2025-09-19_dscf2848.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-09-19T17:47:05",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-09-27_dscf2862",
+      "source": {
+        "originalFilename": "DSCF2862.jpeg",
+        "fingerprint": "size:22004460_mtime:1770667454"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-09-27_dscf2862.jpg",
+        "display": "assets/display/2025-09-27_dscf2862.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-09-27T09:34:17",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-09-27_dscf2872",
+      "source": {
+        "originalFilename": "DSCF2872.jpeg",
+        "fingerprint": "size:11718128_mtime:1770667454"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-09-27_dscf2872.jpg",
+        "display": "assets/display/2025-09-27_dscf2872.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-09-27T09:45:25",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-09-27_dscf2881",
+      "source": {
+        "originalFilename": "DSCF2881.jpeg",
+        "fingerprint": "size:19348015_mtime:1770667454"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-09-27_dscf2881.jpg",
+        "display": "assets/display/2025-09-27_dscf2881.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-09-27T09:51:56",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-09-27_dscf2887",
+      "source": {
+        "originalFilename": "DSCF2887.jpeg",
+        "fingerprint": "size:16814626_mtime:1770667454"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-09-27_dscf2887.jpg",
+        "display": "assets/display/2025-09-27_dscf2887.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-09-27T09:56:34",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-09-27_dscf2889",
+      "source": {
+        "originalFilename": "DSCF2889.jpeg",
+        "fingerprint": "size:6819333_mtime:1770667455"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-09-27_dscf2889.jpg",
+        "display": "assets/display/2025-09-27_dscf2889.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-09-27T10:07:43",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike",
+          "macro"
+        ]
+      }
+    },
+    {
+      "id": "2025-09-27_dscf2904",
+      "source": {
+        "originalFilename": "DSCF2904.jpeg",
+        "fingerprint": "size:24405668_mtime:1770667455"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-09-27_dscf2904.jpg",
+        "display": "assets/display/2025-09-27_dscf2904.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-09-27T11:20:25",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-09-27_dscf2908",
+      "source": {
+        "originalFilename": "DSCF2908.jpeg",
+        "fingerprint": "size:18285798_mtime:1770667455"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-09-27_dscf2908.jpg",
+        "display": "assets/display/2025-09-27_dscf2908.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-09-27T11:20:53",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike",
+          "slow-shutter"
+        ]
+      }
+    },
+    {
+      "id": "2025-09-27_dscf2917",
+      "source": {
+        "originalFilename": "DSCF2917.jpeg",
+        "fingerprint": "size:21571761_mtime:1770667455"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-09-27_dscf2917.jpg",
+        "display": "assets/display/2025-09-27_dscf2917.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-09-27T12:30:06",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-08_dscf2956",
+      "source": {
+        "originalFilename": "DSCF2956.jpeg",
+        "fingerprint": "size:2538509_mtime:1770667455"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-08_dscf2956.jpg",
+        "display": "assets/display/2025-10-08_dscf2956.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-08T14:43:55",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "self"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-08_dscf2971",
+      "source": {
+        "originalFilename": "DSCF2971.jpeg",
+        "fingerprint": "size:2842399_mtime:1770667455"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-08_dscf2971.jpg",
+        "display": "assets/display/2025-10-08_dscf2971.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-08T14:47:11",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "self",
+          "slow-shutter"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-08_dscf2973",
+      "source": {
+        "originalFilename": "DSCF2973.jpeg",
+        "fingerprint": "size:1871909_mtime:1770667455"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-08_dscf2973.jpg",
+        "display": "assets/display/2025-10-08_dscf2973.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-08T14:47:19",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "self",
+          "slow-shutter"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-08_dscf2979",
+      "source": {
+        "originalFilename": "DSCF2979.jpeg",
+        "fingerprint": "size:949205_mtime:1770667456"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-08_dscf2979.jpg",
+        "display": "assets/display/2025-10-08_dscf2979.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-08T14:47:43",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "self",
+          "slow-shutter"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-11_dscf2989",
+      "source": {
+        "originalFilename": "DSCF2989.jpeg",
+        "fingerprint": "size:26499485_mtime:1770667456"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-11_dscf2989.jpg",
+        "display": "assets/display/2025-10-11_dscf2989.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-11T11:13:42",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-11_dscf3007",
+      "source": {
+        "originalFilename": "DSCF3007.jpeg",
+        "fingerprint": "size:25151463_mtime:1770667456"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-11_dscf3007.jpg",
+        "display": "assets/display/2025-10-11_dscf3007.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-11T11:23:26",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-11_dscf3026",
+      "source": {
+        "originalFilename": "DSCF3026.jpeg",
+        "fingerprint": "size:16256382_mtime:1770667456"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-11_dscf3026.jpg",
+        "display": "assets/display/2025-10-11_dscf3026.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-11T11:43:13",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-11_dscf3039",
+      "source": {
+        "originalFilename": "DSCF3039.jpeg",
+        "fingerprint": "size:17594461_mtime:1770667456"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-11_dscf3039.jpg",
+        "display": "assets/display/2025-10-11_dscf3039.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-11T11:51:05",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-11_dscf3063",
+      "source": {
+        "originalFilename": "DSCF3063.jpeg",
+        "fingerprint": "size:3957548_mtime:1770667456"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-11_dscf3063.jpg",
+        "display": "assets/display/2025-10-11_dscf3063.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-11T13:09:01",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-19_dscf3073",
+      "source": {
+        "originalFilename": "DSCF3073.jpeg",
+        "fingerprint": "size:9822748_mtime:1770667456"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-19_dscf3073.jpg",
+        "display": "assets/display/2025-10-19_dscf3073.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-19T11:37:16",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-19_dscf3075",
+      "source": {
+        "originalFilename": "DSCF3075.jpeg",
+        "fingerprint": "size:24848750_mtime:1770667457"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-19_dscf3075.jpg",
+        "display": "assets/display/2025-10-19_dscf3075.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-19T11:37:55",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-19_dscf3091",
+      "source": {
+        "originalFilename": "DSCF3091.jpeg",
+        "fingerprint": "size:12288245_mtime:1770667457"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-19_dscf3091.jpg",
+        "display": "assets/display/2025-10-19_dscf3091.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-19T12:34:13",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-19_dscf3103",
+      "source": {
+        "originalFilename": "DSCF3103.jpeg",
+        "fingerprint": "size:24057402_mtime:1770667457"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-19_dscf3103.jpg",
+        "display": "assets/display/2025-10-19_dscf3103.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-19T12:46:26",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "hike"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-24_dscf3292",
+      "source": {
+        "originalFilename": "DSCF3292.jpeg",
+        "fingerprint": "size:15446799_mtime:1770667457"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-24_dscf3292.jpg",
+        "display": "assets/display/2025-10-24_dscf3292.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-24T16:27:03",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "self",
+          "slow-shutter"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-25_dscf3396",
+      "source": {
+        "originalFilename": "DSCF3396.jpeg",
+        "fingerprint": "size:14762992_mtime:1770667457"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-25_dscf3396.jpg",
+        "display": "assets/display/2025-10-25_dscf3396.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-25T10:50:53",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "central-park-climbing"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-25_dscf3400",
+      "source": {
+        "originalFilename": "DSCF3400.jpeg",
+        "fingerprint": "size:13953690_mtime:1770667458"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-25_dscf3400.jpg",
+        "display": "assets/display/2025-10-25_dscf3400.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-25T10:52:23",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "central-park-climbing"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-25_dscf3410",
+      "source": {
+        "originalFilename": "DSCF3410.jpeg",
+        "fingerprint": "size:12468932_mtime:1770667458"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-25_dscf3410.jpg",
+        "display": "assets/display/2025-10-25_dscf3410.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-25T11:26:32",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "central-park-climbing"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-25_dscf3411",
+      "source": {
+        "originalFilename": "DSCF3411.jpeg",
+        "fingerprint": "size:11951118_mtime:1770667458"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-25_dscf3411.jpg",
+        "display": "assets/display/2025-10-25_dscf3411.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-25T11:26:40",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "central-park-climbing"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-25_dscf3416",
+      "source": {
+        "originalFilename": "DSCF3416.jpeg",
+        "fingerprint": "size:16149872_mtime:1770667458"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-25_dscf3416.jpg",
+        "display": "assets/display/2025-10-25_dscf3416.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-25T11:28:10",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "central-park-climbing"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-25_dscf3417",
+      "source": {
+        "originalFilename": "DSCF3417.jpeg",
+        "fingerprint": "size:9830730_mtime:1770667458"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-25_dscf3417.jpg",
+        "display": "assets/display/2025-10-25_dscf3417.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-25T11:28:15",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "central-park-climbing"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-25_dscf3429",
+      "source": {
+        "originalFilename": "DSCF3429.jpeg",
+        "fingerprint": "size:6497240_mtime:1770667458"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-25_dscf3429.jpg",
+        "display": "assets/display/2025-10-25_dscf3429.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-25T11:35:24",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "central-park-climbing"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-25_dscf3432",
+      "source": {
+        "originalFilename": "DSCF3432.jpeg",
+        "fingerprint": "size:6897601_mtime:1770667458"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-25_dscf3432.jpg",
+        "display": "assets/display/2025-10-25_dscf3432.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-25T11:36:27",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "central-park-climbing"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-25_dscf3437",
+      "source": {
+        "originalFilename": "DSCF3437.jpeg",
+        "fingerprint": "size:11424693_mtime:1770667459"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-25_dscf3437.jpg",
+        "display": "assets/display/2025-10-25_dscf3437.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-25T11:37:06",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "central-park-climbing"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-25_dscf3440",
+      "source": {
+        "originalFilename": "DSCF3440.jpeg",
+        "fingerprint": "size:3039181_mtime:1770667459"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-25_dscf3440.jpg",
+        "display": "assets/display/2025-10-25_dscf3440.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-25T11:38:36",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "event": [
+          "central-park-climbing"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-11-14_dscf3548",
+      "source": {
+        "originalFilename": "DSCF3548.jpeg",
+        "fingerprint": "size:10166694_mtime:1770667459"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-11-14_dscf3548.jpg",
+        "display": "assets/display/2025-11-14_dscf3548.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-11-14T21:42:44",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "event": [
+          "priya-rahul-wedding"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2025-11-22_dscf3736",
+      "source": {
+        "originalFilename": "DSCF3736.jpeg",
+        "fingerprint": "size:12365405_mtime:1770667460"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-11-22_dscf3736.jpg",
+        "display": "assets/display/2025-11-22_dscf3736.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-11-22T15:01:16",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "self"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_dscf3966",
+      "source": {
+        "originalFilename": "DSCF3966.jpeg",
+        "fingerprint": "size:13229217_mtime:1770667461"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_dscf3966.jpg",
+        "display": "assets/display/2025-12-14_dscf3966.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T11:41:57",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_dscf3998",
+      "source": {
+        "originalFilename": "DSCF3998.jpeg",
+        "fingerprint": "size:14989916_mtime:1770667461"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_dscf3998.jpg",
+        "display": "assets/display/2025-12-14_dscf3998.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T11:51:05",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_dscf4007",
+      "source": {
+        "originalFilename": "DSCF4007.jpeg",
+        "fingerprint": "size:13851178_mtime:1770667461"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_dscf4007.jpg",
+        "display": "assets/display/2025-12-14_dscf4007.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T11:52:31",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_dscf4012",
+      "source": {
+        "originalFilename": "DSCF4012.jpeg",
+        "fingerprint": "size:11967540_mtime:1770667461"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_dscf4012.jpg",
+        "display": "assets/display/2025-12-14_dscf4012.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T11:53:22",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_dscf4019",
+      "source": {
+        "originalFilename": "DSCF4019.jpeg",
+        "fingerprint": "size:9996417_mtime:1770667461"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_dscf4019.jpg",
+        "display": "assets/display/2025-12-14_dscf4019.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T11:54:32",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_dscf4025",
+      "source": {
+        "originalFilename": "DSCF4025.jpeg",
+        "fingerprint": "size:12427624_mtime:1770667462"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_dscf4025.jpg",
+        "display": "assets/display/2025-12-14_dscf4025.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T11:56:24",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_dscf4033",
+      "source": {
+        "originalFilename": "DSCF4033.jpeg",
+        "fingerprint": "size:7138646_mtime:1770667462"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_dscf4033.jpg",
+        "display": "assets/display/2025-12-14_dscf4033.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T11:57:28",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_dscf4070",
+      "source": {
+        "originalFilename": "DSCF4070.jpeg",
+        "fingerprint": "size:14918568_mtime:1770667462"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_dscf4070.jpg",
+        "display": "assets/display/2025-12-14_dscf4070.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T12:49:49",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_dscf4074",
+      "source": {
+        "originalFilename": "DSCF4074.jpeg",
+        "fingerprint": "size:24718541_mtime:1770667463"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_dscf4074.jpg",
+        "display": "assets/display/2025-12-14_dscf4074.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T16:27:33",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_dscf4079",
+      "source": {
+        "originalFilename": "DSCF4079.jpeg",
+        "fingerprint": "size:23741511_mtime:1770667463"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_dscf4079.jpg",
+        "display": "assets/display/2025-12-14_dscf4079.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T16:28:33",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-15_dscf4112",
+      "source": {
+        "originalFilename": "DSCF4112.jpeg",
+        "fingerprint": "size:11348019_mtime:1770667464"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-15_dscf4112.jpg",
+        "display": "assets/display/2025-12-15_dscf4112.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-15T20:47:39",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "concert",
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-15_dscf4114",
+      "source": {
+        "originalFilename": "DSCF4114.jpeg",
+        "fingerprint": "size:18129492_mtime:1770667464"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-15_dscf4114.jpg",
+        "display": "assets/display/2025-12-15_dscf4114.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-15T20:47:42",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "concert",
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-15_dscf4153",
+      "source": {
+        "originalFilename": "DSCF4153.jpeg",
+        "fingerprint": "size:8425175_mtime:1770667464"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-15_dscf4153.jpg",
+        "display": "assets/display/2025-12-15_dscf4153.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-15T21:06:20",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc",
+          "concert"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-15_dscf4160",
+      "source": {
+        "originalFilename": "DSCF4160.jpeg",
+        "fingerprint": "size:10977169_mtime:1770667465"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-15_dscf4160.jpg",
+        "display": "assets/display/2025-12-15_dscf4160.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-15T21:14:03",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "concert",
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-15_dscf4165",
+      "source": {
+        "originalFilename": "DSCF4165.jpeg",
+        "fingerprint": "size:14498921_mtime:1770667465"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-15_dscf4165.jpg",
+        "display": "assets/display/2025-12-15_dscf4165.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-15T22:04:25",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "concert",
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-15_dscf4169",
+      "source": {
+        "originalFilename": "DSCF4169.jpeg",
+        "fingerprint": "size:18254231_mtime:1770667465"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-15_dscf4169.jpg",
+        "display": "assets/display/2025-12-15_dscf4169.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-15T22:04:51",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "concert",
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-18_dscf4260",
+      "source": {
+        "originalFilename": "DSCF4260.jpeg",
+        "fingerprint": "size:7655561_mtime:1770667465"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-18_dscf4260.jpg",
+        "display": "assets/display/2025-12-18_dscf4260.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-18T16:01:21",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-18_dscf4267",
+      "source": {
+        "originalFilename": "DSCF4267.jpeg",
+        "fingerprint": "size:14582715_mtime:1770667465"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-18_dscf4267.jpg",
+        "display": "assets/display/2025-12-18_dscf4267.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-18T16:10:55",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-18_dscf4269",
+      "source": {
+        "originalFilename": "DSCF4269.jpeg",
+        "fingerprint": "size:13945137_mtime:1770667465"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-18_dscf4269.jpg",
+        "display": "assets/display/2025-12-18_dscf4269.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-18T16:11:39",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-18_dscf4278",
+      "source": {
+        "originalFilename": "DSCF4278.jpeg",
+        "fingerprint": "size:17128099_mtime:1770667465"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-18_dscf4278.jpg",
+        "display": "assets/display/2025-12-18_dscf4278.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-18T16:49:42",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "slow-shutter",
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-24_dscf4291",
+      "source": {
+        "originalFilename": "DSCF4291.jpeg",
+        "fingerprint": "size:10730449_mtime:1770667466"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-24_dscf4291.jpg",
+        "display": "assets/display/2025-12-24_dscf4291.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-24T23:46:00",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "slow-shutter"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-24_dscf4301",
+      "source": {
+        "originalFilename": "DSCF4301.jpeg",
+        "fingerprint": "size:9122163_mtime:1770667466"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-24_dscf4301.jpg",
+        "display": "assets/display/2025-12-24_dscf4301.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-24T23:46:45",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "slow-shutter"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-24_dscf4322",
+      "source": {
+        "originalFilename": "DSCF4322.jpeg",
+        "fingerprint": "size:13697798_mtime:1770667466"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-24_dscf4322.jpg",
+        "display": "assets/display/2025-12-24_dscf4322.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-24T23:49:05",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "slow-shutter"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-24_dscf4328",
+      "source": {
+        "originalFilename": "DSCF4328.jpeg",
+        "fingerprint": "size:7681230_mtime:1770667466"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-24_dscf4328.jpg",
+        "display": "assets/display/2025-12-24_dscf4328.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-24T23:49:59",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "slow-shutter"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-31_dscf4379",
+      "source": {
+        "originalFilename": "DSCF4379.jpeg",
+        "fingerprint": "size:28851604_mtime:1770667466"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-31_dscf4379.jpg",
+        "display": "assets/display/2025-12-31_dscf4379.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-31T18:05:06",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "self"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-24_dscf4383",
+      "source": {
+        "originalFilename": "DSCF4383.jpeg",
+        "fingerprint": "size:21337345_mtime:1770667469"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-24_dscf4383.jpg",
+        "display": "assets/display/2026-01-24_dscf4383.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-24T15:50:01",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "self"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-24_dscf4385",
+      "source": {
+        "originalFilename": "DSCF4385.jpeg",
+        "fingerprint": "size:6821531_mtime:1770667469"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-24_dscf4385.jpg",
+        "display": "assets/display/2026-01-24_dscf4385.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-24T18:51:34",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ]
+      }
+    },
+    {
+      "id": "2026-02-04_dscf4393",
+      "source": {
+        "originalFilename": "DSCF4393.jpeg",
+        "fingerprint": "size:13072896_mtime:1770667469"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-02-04_dscf4393.jpg",
+        "display": "assets/display/2026-02-04_dscf4393.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-02-04T14:35:21",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2026-02-04_dscf4396",
+      "source": {
+        "originalFilename": "DSCF4396.jpeg",
+        "fingerprint": "size:546178_mtime:1770667469"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-02-04_dscf4396.jpg",
+        "display": "assets/display/2026-02-04_dscf4396.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-02-04T14:43:57",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2026-02-04_dscf4400",
+      "source": {
+        "originalFilename": "DSCF4400.jpeg",
+        "fingerprint": "size:4591862_mtime:1770667470"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-02-04_dscf4400.jpg",
+        "display": "assets/display/2026-02-04_dscf4400.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-02-04T14:49:40",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2026-02-04_dscf4409",
+      "source": {
+        "originalFilename": "DSCF4409.jpeg",
+        "fingerprint": "size:1244088_mtime:1770667470"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-02-04_dscf4409.jpg",
+        "display": "assets/display/2026-02-04_dscf4409.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-02-04T14:54:47",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2026-02-04_dscf4412",
+      "source": {
+        "originalFilename": "DSCF4412.jpeg",
+        "fingerprint": "size:12253820_mtime:1770667470"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-02-04_dscf4412.jpg",
+        "display": "assets/display/2026-02-04_dscf4412.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-02-04T14:54:59",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2026-02-04_dscf4416",
+      "source": {
+        "originalFilename": "DSCF4416.jpeg",
+        "fingerprint": "size:14577794_mtime:1770667470"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-02-04_dscf4416.jpg",
+        "display": "assets/display/2026-02-04_dscf4416.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-02-04T14:59:36",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2026-02-04_dscf4419",
+      "source": {
+        "originalFilename": "DSCF4419.jpeg",
+        "fingerprint": "size:26473236_mtime:1770667470"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-02-04_dscf4419.jpg",
+        "display": "assets/display/2026-02-04_dscf4419.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-02-04T15:02:22",
+        "cameraMake": "FUJIFILM",
+        "cameraModel": "X-T20",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "x-t20"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-07_img-2766",
+      "source": {
+        "originalFilename": "IMG_2766.jpeg",
+        "fingerprint": "size:6172721_mtime:1770667455"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-07_img-2766.jpg",
+        "display": "assets/display/2025-10-07_img-2766.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-07T13:12:47",
+        "cameraMake": "Apple",
+        "cameraModel": "iPhone 15 Pro",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "iphone-15-pro"
+        ],
+        "misc": [
+          "self",
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-11-13_img-2869",
+      "source": {
+        "originalFilename": "IMG_2869.jpeg",
+        "fingerprint": "size:23976817_mtime:1770667459"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-11-13_img-2869.jpg",
+        "display": "assets/display/2025-11-13_img-2869.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-11-13T16:23:06",
+        "cameraMake": "Apple",
+        "cameraModel": "iPhone 15 Pro",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "iphone-15-pro"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-11-13_img-2870",
+      "source": {
+        "originalFilename": "IMG_2870.jpeg",
+        "fingerprint": "size:8557392_mtime:1770667459"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-11-13_img-2870.jpg",
+        "display": "assets/display/2025-11-13_img-2870.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-11-13T16:23:10",
+        "cameraMake": "Apple",
+        "cameraModel": "iPhone 15 Pro",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "iphone-15-pro"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-11-21_img-2891",
+      "source": {
+        "originalFilename": "IMG_2891.jpeg",
+        "fingerprint": "size:6975948_mtime:1770667460"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-11-21_img-2891.jpg",
+        "display": "assets/display/2025-11-21_img-2891.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-11-21T14:36:34",
+        "cameraMake": "Apple",
+        "cameraModel": "iPhone 15 Pro",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "iphone-15-pro"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-11-22_img-2896",
+      "source": {
+        "originalFilename": "IMG_2896.jpeg",
+        "fingerprint": "size:10311741_mtime:1770667460"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-11-22_img-2896.jpg",
+        "display": "assets/display/2025-11-22_img-2896.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-11-22T15:25:19",
+        "cameraMake": "Apple",
+        "cameraModel": "iPhone 15 Pro",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "iphone-15-pro"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-11-22_img-2902",
+      "source": {
+        "originalFilename": "IMG_2902.jpeg",
+        "fingerprint": "size:9198714_mtime:1770667460"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-11-22_img-2902.jpg",
+        "display": "assets/display/2025-11-22_img-2902.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-11-22T15:31:31",
+        "cameraMake": "Apple",
+        "cameraModel": "iPhone 15 Pro",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "iphone-15-pro"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-11-24_img-2920",
+      "source": {
+        "originalFilename": "IMG_2920.jpeg",
+        "fingerprint": "size:27299337_mtime:1770667460"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-11-24_img-2920.jpg",
+        "display": "assets/display/2025-11-24_img-2920.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-11-24T15:01:17",
+        "cameraMake": "Apple",
+        "cameraModel": "iPhone 15 Pro",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "camera": [
+          "iphone-15-pro"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-20_img-3068",
+      "source": {
+        "originalFilename": "IMG_3068.jpeg",
+        "fingerprint": "size:7058589_mtime:1770667469"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-20_img-3068.jpg",
+        "display": "assets/display/2026-01-20_img-3068.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-20T14:19:18",
+        "cameraMake": "Apple",
+        "cameraModel": "iPhone 15 Pro",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "iphone-15-pro"
+        ]
+      }
+    },
+    {
+      "id": "2026-01-31_img-3081",
+      "source": {
+        "originalFilename": "IMG_3081.jpeg",
+        "fingerprint": "size:13569534_mtime:1770667469"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2026-01-31_img-3081.jpg",
+        "display": "assets/display/2026-01-31_img-3081.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2026-01-31T09:29:19",
+        "cameraMake": "Apple",
+        "cameraModel": "iPhone 15 Pro",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "camera": [
+          "iphone-15-pro"
+        ],
+        "misc": [
+          "self"
+        ]
+      }
+    },
+    {
+      "id": "2025-12-14_img-3477",
+      "source": {
+        "originalFilename": "IMG_3477.jpeg",
+        "fingerprint": "size:7758930_mtime:1770667463"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-12-14_img-3477.jpg",
+        "display": "assets/display/2025-12-14_img-3477.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-12-14T18:54:00",
+        "cameraMake": "SONY",
+        "cameraModel": "ILCE-7M2",
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "bw"
+        ],
+        "event": [
+          "areeb"
+        ],
+        "camera": [
+          "ilce-7m2"
+        ],
+        "misc": [
+          "nyc"
+        ]
+      }
+    },
+    {
+      "id": "2025-10-24_composite-transparent-union",
+      "source": {
+        "originalFilename": "composite_transparent_union.jpeg",
+        "fingerprint": "size:3396658_mtime:1770667457"
+      },
+      "paths": {
+        "thumb": "assets/thumbs/2025-10-24_composite-transparent-union.jpg",
+        "display": "assets/display/2025-10-24_composite-transparent-union.jpg",
+        "original": null
+      },
+      "exif": {
+        "dateTaken": "2025-10-24T19:28:10",
+        "cameraMake": null,
+        "cameraModel": null,
+        "lensModel": null,
+        "exposureTime": null,
+        "fNumber": null,
+        "iso": null,
+        "focalLength": null
+      },
+      "meta": {
+        "title": null,
+        "caption": null,
+        "location": null
+      },
+      "tags": {
+        "medium": [
+          "digital"
+        ],
+        "color": [
+          "color"
+        ],
+        "misc": [
+          "slow-shutter",
+          "self"
+        ]
+      }
+    }
+  ]
 }

@@ -103,7 +103,13 @@ function openLightbox(index) {
   lbImg.src = p.paths.display;
   const dt = p?.exif?.dateTaken ? ` • ${p.exif.dateTaken}` : "";
   const cam = p?.exif?.cameraModel ? ` • ${p.exif.cameraModel}` : "";
-  lbMeta.textContent = `${lbIndex + 1} / ${viewPhotos.length}${dt}${cam}`;
+
+  const exp = p?.exif?.exposureTime ? ` • ${p.exif.exposureTime}` : "";
+  const fno = p?.exif?.fNumber ? ` • ${p.exif.fNumber}` : "";
+  const iso = p?.exif?.iso ? ` • ISO ${p.exif.iso}` : "";
+  const fl  = p?.exif?.focalLength ? ` • ${p.exif.focalLength}` : "";
+  
+  lbMeta.textContent = `${lbIndex + 1} / ${viewPhotos.length}${dt}${cam}${exp}${fno}${iso}${fl}`;
   lightbox.classList.remove("hidden");
   lightbox.setAttribute("aria-hidden", "false");
 }
