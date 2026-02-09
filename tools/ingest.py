@@ -472,9 +472,8 @@ TEMPLATE = r"""
     const res = await fetch("/api/prev");
     const prev = await res.json();
     if (!prev.ok) return;
-    const cur = parseTags(tagsEl.value);
-    (prev.tags || []).forEach(t => { if (t && !cur.includes(t)) cur.push(t); });
-    setTags(cur);
+    setTags(prev.tags || []);
+    tagsEl.focus();
   });
 
   document.getElementById("prevBtn").addEventListener("click", () => location.href = "/tag/" + Math.max(0, idx - 1));
@@ -558,8 +557,6 @@ def create_app(
 
         # default tags: digital if EXIF camera exists + camera slug if model exists
         default_tags: List[str] = []
-        if item.exif.get("cameraMake") or item.exif.get("cameraModel"):
-            default_tags.append("digital")
         if item.exif.get("cameraModel"):
             default_tags.append(slugify(item.exif["cameraModel"]))
         default_tags = normalize_tag_list(default_tags)

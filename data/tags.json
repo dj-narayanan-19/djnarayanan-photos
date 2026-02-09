@@ -1,14 +1,30 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-09T21:36:52Z",
+  "generatedAt": "2026-02-09T23:25:25Z",
   "tags": [
+    {
+      "name": "acadia",
+      "count": 44
+    },
     {
       "name": "areeb",
       "count": 4
     },
     {
+      "name": "boston",
+      "count": 190
+    },
+    {
       "name": "bw",
-      "count": 33
+      "count": 95
+    },
+    {
+      "name": "california",
+      "count": 77
+    },
+    {
+      "name": "cat",
+      "count": 12
     },
     {
       "name": "central-park-climbing",
@@ -16,31 +32,71 @@
     },
     {
       "name": "color",
-      "count": 59
+      "count": 510
+    },
+    {
+      "name": "colorado",
+      "count": 5
     },
     {
       "name": "concert",
-      "count": 8
+      "count": 12
     },
     {
       "name": "digital",
-      "count": 92
+      "count": 462
+    },
+    {
+      "name": "ez-controller",
+      "count": 73
+    },
+    {
+      "name": "film",
+      "count": 100
     },
     {
       "name": "finepix-ax650",
       "count": 9
     },
     {
+      "name": "food",
+      "count": 7
+    },
+    {
       "name": "hike",
-      "count": 17
+      "count": 113
     },
     {
       "name": "ilce-7m2",
       "count": 4
     },
     {
+      "name": "iphone-11-pro",
+      "count": 13
+    },
+    {
+      "name": "iphone-14",
+      "count": 1
+    },
+    {
+      "name": "iphone-14-plus",
+      "count": 1
+    },
+    {
+      "name": "iphone-14-pro-max",
+      "count": 1
+    },
+    {
       "name": "iphone-15-pro",
-      "count": 9
+      "count": 41
+    },
+    {
+      "name": "iphone-se-3rd-generation",
+      "count": 1
+    },
+    {
+      "name": "ireland",
+      "count": 32
     },
     {
       "name": "macro",
@@ -48,23 +104,51 @@
     },
     {
       "name": "nyc",
-      "count": 35
+      "count": 104
+    },
+    {
+      "name": "people",
+      "count": 168
+    },
+    {
+      "name": "porchfest",
+      "count": 51
+    },
+    {
+      "name": "prague",
+      "count": 36
     },
     {
       "name": "priya-rahul-wedding",
       "count": 1
     },
     {
+      "name": "puerto-rico",
+      "count": 30
+    },
+    {
       "name": "self",
-      "count": 11
+      "count": 32
     },
     {
       "name": "slow-shutter",
-      "count": 11
+      "count": 12
+    },
+    {
+      "name": "snow",
+      "count": 14
+    },
+    {
+      "name": "street",
+      "count": 5
+    },
+    {
+      "name": "tree",
+      "count": 15
     },
     {
       "name": "x-t20",
-      "count": 69
+      "count": 437
     }
   ]
 }
