@@ -15,6 +15,10 @@ const modeOrBtn = document.getElementById("modeOr");
 
 let filterMode = "AND"; // OR
 let selectedTags = new Set();
+let tagCounts = new Map(); // tag -> count for summary line
+let sentinelEl = null;
+let observer = null;
+let isInitializing = true;
 
 // Lightbox
 const lightbox = document.getElementById("lightbox");
@@ -90,12 +94,20 @@ function sortPhotos(arr, mode) {
   return copy;
 }
 
-function rebuildView() {
-  page = 1;
+function rebuildView({ preservePage = false } = {}) {
+  if (!preservePage) page = 1;
+
   const filtered = applyFilter(allPhotos);
   viewPhotos = sortPhotos(filtered, sortSelect.value);
+
+  renderedCount = 0;
+  gridEl.innerHTML = "";
+
   updateTagSummary();
   render();
+
+  // Keep URL in sync (but don’t do it during initial bootstrapping)
+  if (!isInitializing) setUrlState();
 }
 
 function updateTagSummary() {
@@ -104,22 +116,30 @@ function updateTagSummary() {
     return;
   }
   const tags = Array.from(selectedTags);
-  tagSummaryEl.textContent = `${tags.length} tag(s): ${tags.slice(0, 3).join(", ")}${tags.length > 3 ? "…" : ""}`;
+  const formatted = tags.map(t => `${t} (${tagCounts.get(t) ?? 0})`);
+  tagSummaryEl.textContent =
+    `${tags.length} tag(s): ${formatted.slice(0, 3).join(", ")}${tags.length > 3 ? "…" : ""}`;
 }
+
+let renderedCount = 0;
 
 function render() {
   const total = viewPhotos.length;
-  const showing = Math.min(total, page * PAGE_SIZE);
+  const target = Math.min(total, page * PAGE_SIZE);
 
   statusEl.textContent = total === 0
     ? "No photos match your filter."
-    : `Showing ${showing} of ${total}`;
+    : `Showing ${target} of ${total}`;
 
-  gridEl.innerHTML = "";
+  // If we are starting over (new filter/sort), clear
+  if (renderedCount > target) {
+    renderedCount = 0;
+    gridEl.innerHTML = "";
+  }
 
-  const slice = viewPhotos.slice(0, showing);
-  for (let i = 0; i < slice.length; i++) {
-    const p = slice[i];
+  // Append new tiles only
+  for (let i = renderedCount; i < target; i++) {
+    const p = viewPhotos[i];
     const tile = document.createElement("div");
     tile.className = "tile";
     tile.dataset.index = String(i);
@@ -131,11 +151,13 @@ function render() {
 
     tile.appendChild(img);
     tile.addEventListener("click", () => openLightbox(i));
-
     gridEl.appendChild(tile);
   }
 
-  loadMoreBtn.style.display = showing < total ? "inline-flex" : "none";
+  renderedCount = target;
+
+  // Button becomes fallback (optional)
+  loadMoreBtn.style.display = renderedCount < total ? "inline-flex" : "none";
 }
 
 function openLightbox(index) {
@@ -232,6 +254,74 @@ function buildTagUI(tagIndex) {
   }
 }
 
+function getUrlState() {
+  const sp = new URLSearchParams(window.location.search);
+
+  const tagsRaw = sp.get("tags") || "";
+  const tags = tagsRaw
+    .split(",")
+    .map(t => t.trim())
+    .filter(Boolean);
+
+  const mode = (sp.get("mode") || "AND").toUpperCase() === "OR" ? "OR" : "AND";
+  const sort = sp.get("sort") || "date_desc";
+
+  const pageParam = parseInt(sp.get("page") || "1", 10);
+  const page = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
+
+  return { tags, mode, sort, page };
+}
+
+function setUrlState() {
+  const sp = new URLSearchParams(window.location.search);
+
+  const tagsArr = Array.from(selectedTags);
+  if (tagsArr.length) sp.set("tags", tagsArr.join(","));
+  else sp.delete("tags");
+
+  sp.set("mode", filterMode);
+  sp.set("sort", sortSelect.value);
+
+  // keep page so reload returns to roughly same position
+  sp.set("page", String(page));
+
+  const newUrl = `${window.location.pathname}?${sp.toString()}`;
+  history.replaceState(null, "", newUrl);
+}
+
+function ensureInfiniteScroll() {
+  if (!sentinelEl) {
+    sentinelEl = document.createElement("div");
+    sentinelEl.id = "scrollSentinel";
+    sentinelEl.style.height = "1px";
+    sentinelEl.style.width = "100%";
+    sentinelEl.style.margin = "1px 0";
+    gridEl.after(sentinelEl);
+  }
+
+  if (observer) observer.disconnect();
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      const e = entries[0];
+      if (!e || !e.isIntersecting) return;
+
+      const total = viewPhotos.length;
+      const showing = Math.min(total, page * PAGE_SIZE);
+
+      // If not all shown, advance page and render more.
+      if (showing < total) {
+        page += 1;
+        render();
+        if (!isInitializing) setUrlState();
+      }
+    },
+    { root: null, rootMargin: "800px 0px", threshold: 0.01 } // prefetch before reaching bottom
+  );
+
+  observer.observe(sentinelEl);
+}
+
 async function init() {
   try {
     const [photosRes, tagsRes] = await Promise.all([
@@ -255,7 +345,42 @@ async function init() {
       tagIndex = { tags: Object.keys(counts).sort().map(k => ({ name: k, count: counts[k] })) };
     }
 
+    tagCounts = new Map((tagIndex.tags || []).map(t => [t.name, t.count ?? 0]));
+
     buildTagUI(tagIndex);
+
+    const urlState = getUrlState();
+
+    // Apply sort
+    if (urlState.sort) sortSelect.value = urlState.sort;
+
+    // Apply mode
+    filterMode = urlState.mode;
+    if (filterMode === "AND") {
+      modeAndBtn.classList.add("active");
+      modeOrBtn.classList.remove("active");
+    } else {
+      modeOrBtn.classList.add("active");
+      modeAndBtn.classList.remove("active");
+    }
+
+    // Apply tags
+    selectedTags = new Set(urlState.tags);
+    tagListEl.querySelectorAll("input[type=checkbox]").forEach(cb => {
+      cb.checked = selectedTags.has(cb.value);
+    });
+
+    // Apply page
+    page = urlState.page;
+
+    // Sync summary + render
+    updateTagSummary();
+    ensureInfiniteScroll();
+
+    // Finish boot + render view
+    isInitializing = false;
+    rebuildView({ preservePage: true });
+    setUrlState(); // normalize URL (e.g., enforce mode/sort/page defaults)
 
     // events
     sortSelect.addEventListener("change", rebuildView);
