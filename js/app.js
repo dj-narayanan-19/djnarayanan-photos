@@ -158,8 +158,6 @@ function render() {
 function openLightbox(index) {
   lbIndex = index;
   const p = viewPhotos[lbIndex];
-
-  // set src and clear any previous sizing quirks
   lbImg.src = p.paths.display;
 
   const date = formatDateReadable(p?.exif?.dateTaken);
@@ -255,10 +253,7 @@ function getUrlState() {
   const sp = new URLSearchParams(window.location.search);
 
   const tagsRaw = sp.get("tags") || "";
-  const tags = tagsRaw
-    .split(",")
-    .map(t => t.trim())
-    .filter(Boolean);
+  const tags = tagsRaw.split(",").map(t => t.trim()).filter(Boolean);
 
   const mode = (sp.get("mode") || "AND").toUpperCase() === "OR" ? "OR" : "AND";
   const sort = sp.get("sort") || "date_desc";
@@ -395,7 +390,6 @@ async function init() {
     lbPrev.addEventListener("click", () => lbStep(-1));
     lbNext.addEventListener("click", () => lbStep(1));
 
-    // clicking the dark background closes
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) closeLightbox();
     });

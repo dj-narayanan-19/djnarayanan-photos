@@ -75,10 +75,9 @@ select {
   overflow: hidden;
   background: #f6f6f6;
   cursor: pointer;
-  border-radius: 0;          /* square */
+  border-radius: 0;
 }
 
-/* Square tiles with no rounding; image crops to fill square */
 .tile img {
   width: 100%;
   height: 100%;
@@ -108,7 +107,7 @@ select {
 }
 
 /* ----------------------------
-   Lightbox: guarantee full image visible + meta below
+   Lightbox: GUARANTEE full image visible + meta below
    ---------------------------- */
 .lightbox {
   position: fixed;
@@ -119,12 +118,11 @@ select {
 .lightbox.hidden { display: none; }
 
 .lb-shell {
-  height: 100%;
+  height: 100vh;           /* definite */
   display: flex;
   flex-direction: column;
 }
 
-/* top row (close) */
 .lb-top {
   flex: 0 0 auto;
   padding: 10px;
@@ -142,18 +140,18 @@ select {
   cursor: pointer;
 }
 
-/* body: nav | center | nav */
+/* body takes remaining viewport height */
 .lb-body {
   flex: 1 1 auto;
+  min-height: 0; /* critical */
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: stretch;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 10px;
   padding: 0 10px 12px;
-  min-height: 0; /* critical */
+  align-items: stretch;
 }
 
-/* nav buttons centered vertically, but don't affect sizing */
+/* nav buttons */
 .lb-nav {
   align-self: center;
   font-size: 44px;
@@ -165,26 +163,28 @@ select {
   cursor: pointer;
 }
 
+/* center column has definite height = lb-body height */
 .lb-center {
   width: min(1100px, 92vw);
+  height: 100%;           /* definite */
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto; /* image region shrinks, meta below */
   gap: 10px;
-  min-height: 0; /* critical */
+  min-height: 0;          /* critical */
 }
 
-/* Image wrapper takes remaining space after meta; no overflow */
+/* image wrapper occupies the 1fr track and can shrink */
 .lb-imgwrap {
-  flex: 1 1 auto;
-  min-height: 0;
+  min-height: 0;          /* critical */
+  overflow: hidden;
   display: grid;
   place-items: center;
-  overflow: hidden;
   border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.15);
 }
 
-/* THE KEY: image is bounded by wrapper and uses contain */
+/* this now works because parent has a definite height */
 .lb-img {
   max-width: 100%;
   max-height: 100%;
@@ -194,9 +194,7 @@ select {
   display: block;
 }
 
-/* Meta always below image, visible, scrollable if needed */
 .lb-meta {
-  flex: 0 0 auto;
   padding: 10px 12px;
   color: rgba(255,255,255,0.9);
   font-size: 13px;
