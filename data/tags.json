@@ -1,22 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-09T23:25:25Z",
+  "generatedAt": "2026-02-10T18:25:49Z",
   "tags": [
     {
       "name": "acadia",
       "count": 44
     },
     {
-      "name": "areeb",
-      "count": 4
+      "name": "black-and-white",
+      "count": 95
     },
     {
       "name": "boston",
       "count": 190
-    },
-    {
-      "name": "bw",
-      "count": 95
     },
     {
       "name": "california",
@@ -47,20 +43,20 @@
       "count": 462
     },
     {
-      "name": "ez-controller",
-      "count": 73
-    },
-    {
       "name": "film",
       "count": 100
     },
     {
-      "name": "finepix-ax650",
+      "name": "food",
+      "count": 7
+    },
+    {
+      "name": "fujifilm-finepix-ax650",
       "count": 9
     },
     {
-      "name": "food",
-      "count": 7
+      "name": "fujifilm-x-t20",
+      "count": 437
     },
     {
       "name": "hike",
@@ -71,36 +67,12 @@
       "count": 4
     },
     {
-      "name": "iphone-11-pro",
-      "count": 13
-    },
-    {
-      "name": "iphone-14",
-      "count": 1
-    },
-    {
-      "name": "iphone-14-plus",
-      "count": 1
-    },
-    {
-      "name": "iphone-14-pro-max",
-      "count": 1
-    },
-    {
-      "name": "iphone-15-pro",
-      "count": 41
-    },
-    {
-      "name": "iphone-se-3rd-generation",
-      "count": 1
+      "name": "iphone",
+      "count": 58
     },
     {
       "name": "ireland",
       "count": 32
-    },
-    {
-      "name": "macro",
-      "count": 1
     },
     {
       "name": "nyc",
@@ -117,10 +89,6 @@
     {
       "name": "prague",
       "count": 36
-    },
-    {
-      "name": "priya-rahul-wedding",
-      "count": 1
     },
     {
       "name": "puerto-rico",
@@ -145,10 +113,6 @@
     {
       "name": "tree",
       "count": 15
-    },
-    {
-      "name": "x-t20",
-      "count": 437
     }
   ]
 }
