@@ -45,7 +45,9 @@
 
   <main class="container">
     <div id="status" class="status">Loading…</div>
-    <div id="grid" class="grid"></div>
+
+    <!-- Justified layout container -->
+    <div id="grid" class="jgrid" aria-live="polite"></div>
 
     <div class="loadmore-wrap">
       <button id="loadMoreBtn" class="button secondary">Load more</button>
@@ -54,11 +56,23 @@
 
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox hidden" aria-hidden="true">
-    <button id="lbClose" class="lb-close" aria-label="Close">×</button>
-    <button id="lbPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
-    <img id="lbImg" class="lb-img" alt="" />
-    <button id="lbNext" class="lb-nav lb-next" aria-label="Next">›</button>
-    <div id="lbMeta" class="lb-meta"></div>
+    <div class="lb-shell" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <div class="lb-top">
+        <button id="lbClose" class="lb-close" aria-label="Close">×</button>
+      </div>
+
+      <div class="lb-mid">
+        <button id="lbPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
+
+        <div class="lb-imgwrap">
+          <img id="lbImg" class="lb-img" alt="" />
+        </div>
+
+        <button id="lbNext" class="lb-nav lb-next" aria-label="Next">›</button>
+      </div>
+
+      <div id="lbMeta" class="lb-meta"></div>
+    </div>
   </div>
 
   <script src="js/app.js"></script>

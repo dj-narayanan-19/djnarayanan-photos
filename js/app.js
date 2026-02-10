@@ -94,22 +94,6 @@ function sortPhotos(arr, mode) {
   return copy;
 }
 
-function rebuildView({ preservePage = false } = {}) {
-  if (!preservePage) page = 1;
-
-  const filtered = applyFilter(allPhotos);
-  viewPhotos = sortPhotos(filtered, sortSelect.value);
-
-  renderedCount = 0;
-  gridEl.innerHTML = "";
-
-  updateTagSummary();
-  render();
-
-  // Keep URL in sync (but don’t do it during initial bootstrapping)
-  if (!isInitializing) setUrlState();
-}
-
 function updateTagSummary() {
   if (selectedTags.size === 0) {
     tagSummaryEl.textContent = "Select tags…";
@@ -120,6 +104,121 @@ function updateTagSummary() {
   tagSummaryEl.textContent =
     `${tags.length} tag(s): ${formatted.slice(0, 3).join(", ")}${tags.length > 3 ? "…" : ""}`;
 }
+
+function getUrlState() {
+  const sp = new URLSearchParams(window.location.search);
+
+  const tagsRaw = sp.get("tags") || "";
+  const tags = tagsRaw
+    .split(",")
+    .map(t => t.trim())
+    .filter(Boolean);
+
+  const mode = (sp.get("mode") || "AND").toUpperCase() === "OR" ? "OR" : "AND";
+  const sort = sp.get("sort") || "date_desc";
+
+  const pageParam = parseInt(sp.get("page") || "1", 10);
+  const p = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
+
+  return { tags, mode, sort, page: p };
+}
+
+function setUrlState() {
+  const sp = new URLSearchParams(window.location.search);
+
+  const tagsArr = Array.from(selectedTags);
+  if (tagsArr.length) sp.set("tags", tagsArr.join(","));
+  else sp.delete("tags");
+
+  sp.set("mode", filterMode);
+  sp.set("sort", sortSelect.value);
+
+  // keep page so reload returns to roughly same position
+  sp.set("page", String(page));
+
+  const newUrl = `${window.location.pathname}?${sp.toString()}`;
+  history.replaceState(null, "", newUrl);
+}
+
+/* -------------------------------------------------------
+   Justified grid layout (Option 2)
+   ------------------------------------------------------- */
+
+let layoutRaf = 0;
+
+function cssVarPx(el, name, fallback) {
+  const v = getComputedStyle(el).getPropertyValue(name).trim();
+  if (!v) return fallback;
+  const n = parseFloat(v);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+function scheduleLayout() {
+  if (layoutRaf) return;
+  layoutRaf = requestAnimationFrame(() => {
+    layoutRaf = 0;
+    layoutJustified();
+  });
+}
+
+function layoutJustified() {
+  const tiles = Array.from(gridEl.querySelectorAll(".jtile"));
+  if (!tiles.length) return;
+
+  const gap = cssVarPx(document.documentElement, "--gap", 8);
+  const targetH = cssVarPx(document.documentElement, "--rowh", 260);
+
+  // container inner width
+  const cw = gridEl.clientWidth;
+  if (!cw || cw < 200) return;
+
+  let row = [];
+  let sumAR = 0;
+
+  const flushRow = (justify) => {
+    if (!row.length) return;
+
+    // Width available after accounting for gaps between items
+    const availableW = cw - gap * (row.length - 1);
+
+    // If justify, compute row height so it fills width exactly
+    const h = justify ? (availableW / sumAR) : targetH;
+
+    // Apply sizes
+    for (const t of row) {
+      const ar = parseFloat(t.dataset.ar || "1");
+      const w = Math.max(80, ar * h);
+      t.style.height = `${h}px`;
+      t.style.width = `${w}px`;
+    }
+
+    row = [];
+    sumAR = 0;
+  };
+
+  // Build rows by accumulating aspect ratios
+  // We want “about 2–3 per row” => achieved by target row height + responsive container
+  for (const tile of tiles) {
+    const ar = parseFloat(tile.dataset.ar || "1");
+    // If an image hasn't loaded yet, assume 1 (square) temporarily
+    const safeAR = Number.isFinite(ar) && ar > 0.05 ? ar : 1;
+
+    row.push(tile);
+    sumAR += safeAR;
+
+    // Predicted row width at target height (including gaps)
+    const predictedW = sumAR * targetH + gap * (row.length - 1);
+
+    if (predictedW >= cw * 0.98) {
+      flushRow(true); // justify this row
+    }
+  }
+
+  // Last row: don't stretch; keep at target height
+  flushRow(false);
+}
+
+/* ------------------------------------------------------- */
 
 let renderedCount = 0;
 
@@ -140,14 +239,27 @@ function render() {
   // Append new tiles only
   for (let i = renderedCount; i < target; i++) {
     const p = viewPhotos[i];
+
     const tile = document.createElement("div");
-    tile.className = "tile";
+    tile.className = "jtile";
     tile.dataset.index = String(i);
+
+    // Start with a reasonable placeholder AR so layout isn't chaotic
+    // If EXIF has width/height you could use it; otherwise use 3:2-ish
+    tile.dataset.ar = "1.5";
 
     const img = document.createElement("img");
     img.loading = "lazy";
     img.src = p.paths.thumb;
     img.alt = p.meta?.title ?? "";
+
+    img.addEventListener("load", () => {
+      // Update aspect ratio from loaded thumb dimensions
+      if (img.naturalWidth && img.naturalHeight) {
+        tile.dataset.ar = String(img.naturalWidth / img.naturalHeight);
+        scheduleLayout();
+      }
+    });
 
     tile.appendChild(img);
     tile.addEventListener("click", () => openLightbox(i));
@@ -156,8 +268,27 @@ function render() {
 
   renderedCount = target;
 
+  // Layout now + after images load (throttled)
+  scheduleLayout();
+
   // Button becomes fallback (optional)
   loadMoreBtn.style.display = renderedCount < total ? "inline-flex" : "none";
+}
+
+function rebuildView({ preservePage = false } = {}) {
+  if (!preservePage) page = 1;
+
+  const filtered = applyFilter(allPhotos);
+  viewPhotos = sortPhotos(filtered, sortSelect.value);
+
+  renderedCount = 0;
+  gridEl.innerHTML = "";
+
+  updateTagSummary();
+  render();
+
+  // Keep URL in sync (but don’t do it during initial bootstrapping)
+  if (!isInitializing) setUrlState();
 }
 
 function openLightbox(index) {
@@ -254,41 +385,6 @@ function buildTagUI(tagIndex) {
   }
 }
 
-function getUrlState() {
-  const sp = new URLSearchParams(window.location.search);
-
-  const tagsRaw = sp.get("tags") || "";
-  const tags = tagsRaw
-    .split(",")
-    .map(t => t.trim())
-    .filter(Boolean);
-
-  const mode = (sp.get("mode") || "AND").toUpperCase() === "OR" ? "OR" : "AND";
-  const sort = sp.get("sort") || "date_desc";
-
-  const pageParam = parseInt(sp.get("page") || "1", 10);
-  const page = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
-
-  return { tags, mode, sort, page };
-}
-
-function setUrlState() {
-  const sp = new URLSearchParams(window.location.search);
-
-  const tagsArr = Array.from(selectedTags);
-  if (tagsArr.length) sp.set("tags", tagsArr.join(","));
-  else sp.delete("tags");
-
-  sp.set("mode", filterMode);
-  sp.set("sort", sortSelect.value);
-
-  // keep page so reload returns to roughly same position
-  sp.set("page", String(page));
-
-  const newUrl = `${window.location.pathname}?${sp.toString()}`;
-  history.replaceState(null, "", newUrl);
-}
-
 function ensureInfiniteScroll() {
   if (!sentinelEl) {
     sentinelEl = document.createElement("div");
@@ -309,14 +405,13 @@ function ensureInfiniteScroll() {
       const total = viewPhotos.length;
       const showing = Math.min(total, page * PAGE_SIZE);
 
-      // If not all shown, advance page and render more.
       if (showing < total) {
         page += 1;
         render();
         if (!isInitializing) setUrlState();
       }
     },
-    { root: null, rootMargin: "800px 0px", threshold: 0.01 } // prefetch before reaching bottom
+    { root: null, rootMargin: "800px 0px", threshold: 0.01 }
   );
 
   observer.observe(sentinelEl);
@@ -346,7 +441,6 @@ async function init() {
     }
 
     tagCounts = new Map((tagIndex.tags || []).map(t => [t.name, t.count ?? 0]));
-
     buildTagUI(tagIndex);
 
     const urlState = getUrlState();
@@ -373,21 +467,15 @@ async function init() {
     // Apply page
     page = urlState.page;
 
-    // Sync summary + render
+    // Sync summary + infinite scroll
     updateTagSummary();
     ensureInfiniteScroll();
-
-    // Finish boot + render view
-    isInitializing = false;
-    rebuildView({ preservePage: true });
-    setUrlState(); // normalize URL (e.g., enforce mode/sort/page defaults)
 
     // events
     sortSelect.addEventListener("change", rebuildView);
 
     clearTagsBtn.addEventListener("click", () => {
       selectedTags.clear();
-      // uncheck all
       tagListEl.querySelectorAll("input[type=checkbox]").forEach(cb => cb.checked = false);
       rebuildView();
     });
@@ -409,6 +497,7 @@ async function init() {
     loadMoreBtn.addEventListener("click", () => {
       page += 1;
       render();
+      if (!isInitializing) setUrlState();
     });
 
     lbClose.addEventListener("click", closeLightbox);
@@ -423,7 +512,13 @@ async function init() {
     // Make lbMeta render newlines
     lbMeta.style.whiteSpace = "pre-line";
 
-    rebuildView();
+    // Relayout on resize (important for justified grids)
+    window.addEventListener("resize", scheduleLayout);
+
+    // Finish boot + render view
+    isInitializing = false;
+    rebuildView({ preservePage: true });
+    setUrlState();
   } catch (err) {
     statusEl.textContent = "Failed to load gallery data.";
     console.error(err);
