@@ -1,12 +1,14 @@
 :root {
-  /* Layout */
-  --maxw: 1400px;         /* wider than before to use more screen */
-  --gap: 8px;             /* tighter gutters between images */
-  --radius: 0px;          /* square corners */
+  --maxw: 1400px;
+  --gap: 8px;
   --border: 1px solid rgba(0,0,0,0.12);
 
-  /* Justified rows */
-  --rowh: 260px;          /* target row height (JS will use this) */
+  /* Collage sizing targets (JS reads these) */
+  --tileArea: 92000;     /* roughly controls "prominence" (bigger = bigger tiles) */
+  --minTileW: 220;
+  --maxTileW: 560;
+  --minTileH: 190;
+  --maxTileH: 520;
 }
 
 * { box-sizing: border-box; }
@@ -21,15 +23,6 @@ body {
   width: min(var(--maxw), 96vw);
   margin: 0 auto;
   padding: 16px 12px 28px;
-}
-
-.title { margin: 12px 0 6px; font-size: 28px; }
-.subtitle { margin: 0 0 16px; opacity: 0.75; }
-
-.card {
-  border: var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
 }
 
 /* Topbar */
@@ -72,45 +65,34 @@ select {
 .status { margin: 14px 0; opacity: 0.75; }
 
 /* ----------------------------
-   JUSTIFIED GRID (Option 2)
-   ----------------------------
-   CSS provides the layout container; JS will set each tile's
-   inline style width/height to form justified rows.
-*/
-.jgrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
-  align-items: flex-start;
+   COLLAGE GRID (packed)
+   ---------------------------- */
+.cgrid {
+  position: relative;   /* children absolutely positioned */
+  width: 100%;
+  min-height: 200px;
 }
 
-/* Tile becomes a "box" sized by JS; no rounding; minimal chrome */
-.jtile {
-  position: relative;
-  border-radius: 0;
+/* Tile: absolute position, square corners, small gap handled by packer */
+.ctile {
+  position: absolute;
   overflow: hidden;
   background: #f6f6f6;
   cursor: pointer;
-  flex: 0 0 auto; /* sized via inline width/height */
+  border-radius: 0;
 }
 
-/* Image: absolutely fill tile, NO CROP, preserve aspect */
-.jtile img {
+/* No cropping */
+.ctile img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: contain;   /* key: no cropping */
+  object-fit: contain;
 }
 
-/* Optional: subtle hover without borders/rounding */
-.jtile:hover { outline: 1px solid rgba(0,0,0,0.14); outline-offset: -1px; }
+/* optional subtle hover */
+.ctile:hover { outline: 1px solid rgba(0,0,0,0.14); outline-offset: -1px; }
 
-/* Responsive row height targets (JS will read --rowh) */
-@media (max-width: 520px) { :root { --rowh: 220px; } }
-@media (min-width: 900px) { :root { --rowh: 280px; } }
-@media (min-width: 1200px) { :root { --rowh: 320px; } }
-
-/* Load more */
 .loadmore-wrap { display: flex; justify-content: center; margin: 18px 0 40px; }
 
 .button {
@@ -132,7 +114,7 @@ select {
 }
 
 /* ----------------------------
-   LIGHTBOX (no overlap)
+   LIGHTBOX (image fully visible + meta below)
    ---------------------------- */
 .lightbox {
   position: fixed;
@@ -148,7 +130,6 @@ select {
   flex-direction: column;
 }
 
-/* Top area (close button) */
 .lb-top {
   flex: 0 0 auto;
   padding: 10px;
@@ -156,46 +137,6 @@ select {
   justify-content: flex-end;
 }
 
-/* Middle area: nav + image */
-.lb-mid {
-  flex: 1 1 auto;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 10px;
-  padding: 0 10px 10px;
-  min-height: 0; /* allows proper flex overflow behavior */
-}
-
-/* Image wrapper centers image and prevents overlap */
-.lb-imgwrap {
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  overflow: hidden;
-}
-
-/* Image: fit inside available middle region */
-.lb-img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 0;
-  border: 1px solid rgba(255,255,255,0.18);
-}
-
-/* Nav buttons live in grid columns, not fixed */
-.lb-nav {
-  font-size: 44px;
-  width: 50px; height: 60px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(0,0,0,0.35);
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Close button */
 .lb-close {
   font-size: 30px;
   width: 44px; height: 44px;
@@ -206,22 +147,68 @@ select {
   cursor: pointer;
 }
 
-/* Meta area at bottom — separate section, scrollable */
+/* Center area */
+.lb-mid {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px 12px;
+  min-height: 0;
+}
+
+/* nav buttons do not affect image sizing */
+.lb-nav {
+  font-size: 44px;
+  width: 50px; height: 60px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  cursor: pointer;
+}
+
+.lb-stack {
+  width: min(1100px, 92vw);
+  max-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+.lb-imgwrap {
+  flex: 1 1 auto;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.lb-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* always show full image */
+  display: block;
+  border-radius: 0;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
 .lb-meta {
   flex: 0 0 auto;
-  padding: 10px 12px 14px;
-  color: rgba(255,255,255,0.88);
+  padding: 10px 12px;
+  color: rgba(255,255,255,0.9);
   font-size: 13px;
   line-height: 1.35;
   border-top: 1px solid rgba(255,255,255,0.12);
   background: rgba(0,0,0,0.45);
+  max-height: 22vh;
   overflow: auto;
-  max-height: 32vh; /* ensures it never overlaps image */
+  white-space: pre-line;
 }
 
-/* ----------------------------
-   Tag dropdown + AND/OR toggle
-   ---------------------------- */
+/* Tag dropdown + AND/OR toggle */
 .toggle {
   display: inline-flex;
   border: var(--border);
@@ -280,4 +267,12 @@ select {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
+}
+
+/* Responsive tuning */
+@media (max-width: 520px) {
+  :root { --tileArea: 76000; --minTileW: 190; --maxTileW: 420; }
+}
+@media (min-width: 1100px) {
+  :root { --tileArea: 104000; --minTileW: 240; --maxTileW: 600; }
 }

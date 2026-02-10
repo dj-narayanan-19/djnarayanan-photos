@@ -46,8 +46,8 @@
   <main class="container">
     <div id="status" class="status">Loading…</div>
 
-    <!-- Justified layout container -->
-    <div id="grid" class="jgrid" aria-live="polite"></div>
+    <!-- Collage pack container -->
+    <div id="grid" class="cgrid" aria-live="polite"></div>
 
     <div class="loadmore-wrap">
       <button id="loadMoreBtn" class="button secondary">Load more</button>
@@ -64,14 +64,15 @@
       <div class="lb-mid">
         <button id="lbPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
 
-        <div class="lb-imgwrap">
-          <img id="lbImg" class="lb-img" alt="" />
+        <div class="lb-stack">
+          <div class="lb-imgwrap">
+            <img id="lbImg" class="lb-img" alt="" />
+          </div>
+          <div id="lbMeta" class="lb-meta"></div>
         </div>
 
         <button id="lbNext" class="lb-nav lb-next" aria-label="Next">›</button>
       </div>
-
-      <div id="lbMeta" class="lb-meta"></div>
     </div>
   </div>
 

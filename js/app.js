@@ -15,7 +15,7 @@ const modeOrBtn = document.getElementById("modeOr");
 
 let filterMode = "AND"; // OR
 let selectedTags = new Set();
-let tagCounts = new Map(); // tag -> count for summary line
+let tagCounts = new Map();
 let sentinelEl = null;
 let observer = null;
 let isInitializing = true;
@@ -69,10 +69,7 @@ function hasAnyTag(photo, tags) {
 function applyFilter(arr) {
   const tags = Array.from(selectedTags);
   if (tags.length === 0) return arr;
-
-  if (filterMode === "AND") {
-    return arr.filter(p => hasAllTags(p, tags));
-  }
+  if (filterMode === "AND") return arr.filter(p => hasAllTags(p, tags));
   return arr.filter(p => hasAnyTag(p, tags));
 }
 
@@ -107,115 +104,200 @@ function updateTagSummary() {
 
 function getUrlState() {
   const sp = new URLSearchParams(window.location.search);
-
   const tagsRaw = sp.get("tags") || "";
-  const tags = tagsRaw
-    .split(",")
-    .map(t => t.trim())
-    .filter(Boolean);
-
+  const tags = tagsRaw.split(",").map(t => t.trim()).filter(Boolean);
   const mode = (sp.get("mode") || "AND").toUpperCase() === "OR" ? "OR" : "AND";
   const sort = sp.get("sort") || "date_desc";
-
   const pageParam = parseInt(sp.get("page") || "1", 10);
   const p = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
-
   return { tags, mode, sort, page: p };
 }
 
 function setUrlState() {
   const sp = new URLSearchParams(window.location.search);
-
   const tagsArr = Array.from(selectedTags);
   if (tagsArr.length) sp.set("tags", tagsArr.join(","));
   else sp.delete("tags");
-
   sp.set("mode", filterMode);
   sp.set("sort", sortSelect.value);
-
-  // keep page so reload returns to roughly same position
   sp.set("page", String(page));
-
-  const newUrl = `${window.location.pathname}?${sp.toString()}`;
-  history.replaceState(null, "", newUrl);
+  history.replaceState(null, "", `${window.location.pathname}?${sp.toString()}`);
 }
 
 /* -------------------------------------------------------
-   Justified grid layout (Option 2)
+   Collage packer (Skyline/bin-packing style)
+   - No rows/columns; keeps order; equal prominence via area
    ------------------------------------------------------- */
 
 let layoutRaf = 0;
 
-function cssVarPx(el, name, fallback) {
-  const v = getComputedStyle(el).getPropertyValue(name).trim();
+function cssVarPx(name, fallback) {
+  const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   if (!v) return fallback;
   const n = parseFloat(v);
   return Number.isFinite(n) ? n : fallback;
+}
+
+function clamp(x, a, b) {
+  return Math.max(a, Math.min(b, x));
 }
 
 function scheduleLayout() {
   if (layoutRaf) return;
   layoutRaf = requestAnimationFrame(() => {
     layoutRaf = 0;
-    layoutJustified();
+    layoutCollagePacked();
   });
 }
 
-function layoutJustified() {
-  const tiles = Array.from(gridEl.querySelectorAll(".jtile"));
-  if (!tiles.length) return;
+function layoutCollagePacked() {
+  const tiles = Array.from(gridEl.querySelectorAll(".ctile"));
+  if (!tiles.length) {
+    gridEl.style.height = "0px";
+    return;
+  }
 
-  const gap = cssVarPx(document.documentElement, "--gap", 8);
-  const targetH = cssVarPx(document.documentElement, "--rowh", 260);
+  const gap = cssVarPx("--gap", 8);
+  const area = cssVarPx("--tileArea", 92000);
+  const minW = cssVarPx("--minTileW", 220);
+  const maxW = cssVarPx("--maxTileW", 560);
+  const minH = cssVarPx("--minTileH", 190);
+  const maxH = cssVarPx("--maxTileH", 520);
 
-  // container inner width
   const cw = gridEl.clientWidth;
   if (!cw || cw < 200) return;
 
-  let row = [];
-  let sumAR = 0;
+  // Skyline nodes: each node is { x, y, w }
+  // Interpretation: from x..x+w, the skyline height is y
+  let skyline = [{ x: 0, y: 0, w: cw }];
 
-  const flushRow = (justify) => {
-    if (!row.length) return;
-
-    // Width available after accounting for gaps between items
-    const availableW = cw - gap * (row.length - 1);
-
-    // If justify, compute row height so it fills width exactly
-    const h = justify ? (availableW / sumAR) : targetH;
-
-    // Apply sizes
-    for (const t of row) {
-      const ar = parseFloat(t.dataset.ar || "1");
-      const w = Math.max(80, ar * h);
-      t.style.height = `${h}px`;
-      t.style.width = `${w}px`;
+  function mergeSkyline(nodes) {
+    // merge adjacent nodes with same y
+    const out = [];
+    for (const n of nodes) {
+      if (!out.length) out.push({ ...n });
+      else {
+        const last = out[out.length - 1];
+        if (Math.abs(last.y - n.y) < 0.5 && Math.abs(last.x + last.w - n.x) < 0.5) {
+          last.w += n.w;
+        } else {
+          out.push({ ...n });
+        }
+      }
     }
-
-    row = [];
-    sumAR = 0;
-  };
-
-  // Build rows by accumulating aspect ratios
-  // We want “about 2–3 per row” => achieved by target row height + responsive container
-  for (const tile of tiles) {
-    const ar = parseFloat(tile.dataset.ar || "1");
-    // If an image hasn't loaded yet, assume 1 (square) temporarily
-    const safeAR = Number.isFinite(ar) && ar > 0.05 ? ar : 1;
-
-    row.push(tile);
-    sumAR += safeAR;
-
-    // Predicted row width at target height (including gaps)
-    const predictedW = sumAR * targetH + gap * (row.length - 1);
-
-    if (predictedW >= cw * 0.98) {
-      flushRow(true); // justify this row
-    }
+    return out;
   }
 
-  // Last row: don't stretch; keep at target height
-  flushRow(false);
+  function findPosition(w, h) {
+    // Find the position (x,y) with minimal y where rect fits.
+    // We scan skyline nodes as candidate x positions.
+    let best = null;
+
+    for (let i = 0; i < skyline.length; i++) {
+      const start = skyline[i].x;
+      if (start + w > cw) continue;
+
+      // compute y at this start by scanning segments covering [start, start+w)
+      let x = start;
+      let y = 0;
+      let remaining = w;
+      let j = i;
+
+      y = skyline[i].y;
+
+      while (remaining > 0 && j < skyline.length) {
+        const seg = skyline[j];
+        if (seg.x > x + 0.5) break; // gap in skyline coverage (shouldn't happen)
+        y = Math.max(y, seg.y);
+        const consume = Math.min(remaining, seg.x + seg.w - x);
+        x += consume;
+        remaining -= consume;
+        j += 1;
+      }
+
+      if (remaining > 0) continue; // didn't cover width
+
+      // Candidate position
+      const cand = { x: start, y };
+
+      if (!best) best = cand;
+      else {
+        if (cand.y < best.y - 0.5) best = cand;
+        else if (Math.abs(cand.y - best.y) < 0.5 && cand.x < best.x) best = cand;
+      }
+    }
+
+    return best;
+  }
+
+  function addRect(x, y, w, h) {
+    // Insert a skyline segment at (x, y+h) of width w, removing overlaps.
+    const newY = y + h;
+
+    const out = [];
+    for (const seg of skyline) {
+      const segEnd = seg.x + seg.w;
+      const rectEnd = x + w;
+
+      // No overlap
+      if (segEnd <= x || seg.x >= rectEnd) {
+        out.push(seg);
+        continue;
+      }
+
+      // Left remainder
+      if (seg.x < x) {
+        out.push({ x: seg.x, y: seg.y, w: x - seg.x });
+      }
+
+      // Right remainder
+      if (segEnd > rectEnd) {
+        out.push({ x: rectEnd, y: seg.y, w: segEnd - rectEnd });
+      }
+    }
+
+    // Add the new segment
+    out.push({ x, y: newY, w });
+
+    // Sort by x and merge
+    out.sort((a, b) => a.x - b.x);
+    skyline = mergeSkyline(out);
+  }
+
+  let maxBottom = 0;
+
+  for (const tile of tiles) {
+    // Aspect ratio from loaded image (w/h). If unknown, assume 3:2
+    let ar = parseFloat(tile.dataset.ar || "1.5");
+    if (!Number.isFinite(ar) || ar <= 0.05) ar = 1.5;
+
+    // Equal prominence: constant area => w*h ≈ area, with ar = w/h
+    // => w = sqrt(area * ar), h = w/ar
+    let w = Math.sqrt(area * ar);
+    let h = w / ar;
+
+    // Clamp sizes to keep things sane
+    w = clamp(w, minW, maxW);
+    h = clamp(h, minH, maxH);
+
+    // Add gap padding by inflating rectangle during packing,
+    // but render actual tile at (w,h) and leave gap to the right/bottom.
+    const packW = Math.min(w + gap, cw);
+    const packH = h + gap;
+
+    const pos = findPosition(packW, packH) || { x: 0, y: maxBottom };
+
+    // Apply actual tile position (no need to add gap on left/top; we pack with extra)
+    tile.style.left = `${pos.x}px`;
+    tile.style.top = `${pos.y}px`;
+    tile.style.width = `${w}px`;
+    tile.style.height = `${h}px`;
+
+    addRect(pos.x, pos.y, packW, packH);
+    maxBottom = Math.max(maxBottom, pos.y + packH);
+  }
+
+  gridEl.style.height = `${Math.ceil(maxBottom)}px`;
 }
 
 /* ------------------------------------------------------- */
@@ -230,23 +312,18 @@ function render() {
     ? "No photos match your filter."
     : `Showing ${target} of ${total}`;
 
-  // If we are starting over (new filter/sort), clear
   if (renderedCount > target) {
     renderedCount = 0;
     gridEl.innerHTML = "";
   }
 
-  // Append new tiles only
   for (let i = renderedCount; i < target; i++) {
     const p = viewPhotos[i];
 
     const tile = document.createElement("div");
-    tile.className = "jtile";
+    tile.className = "ctile";
     tile.dataset.index = String(i);
-
-    // Start with a reasonable placeholder AR so layout isn't chaotic
-    // If EXIF has width/height you could use it; otherwise use 3:2-ish
-    tile.dataset.ar = "1.5";
+    tile.dataset.ar = "1.5"; // placeholder until thumb loads
 
     const img = document.createElement("img");
     img.loading = "lazy";
@@ -254,7 +331,6 @@ function render() {
     img.alt = p.meta?.title ?? "";
 
     img.addEventListener("load", () => {
-      // Update aspect ratio from loaded thumb dimensions
       if (img.naturalWidth && img.naturalHeight) {
         tile.dataset.ar = String(img.naturalWidth / img.naturalHeight);
         scheduleLayout();
@@ -267,11 +343,8 @@ function render() {
   }
 
   renderedCount = target;
-
-  // Layout now + after images load (throttled)
   scheduleLayout();
 
-  // Button becomes fallback (optional)
   loadMoreBtn.style.display = renderedCount < total ? "inline-flex" : "none";
 }
 
@@ -287,7 +360,6 @@ function rebuildView({ preservePage = false } = {}) {
   updateTagSummary();
   render();
 
-  // Keep URL in sync (but don’t do it during initial bootstrapping)
   if (!isInitializing) setUrlState();
 }
 
@@ -428,7 +500,6 @@ async function init() {
     const photosData = await photosRes.json();
     allPhotos = Array.isArray(photosData.photos) ? photosData.photos : [];
 
-    // If tags.json missing, derive from photos.json (fallback)
     let tagIndex = null;
     if (tagsRes && tagsRes.ok) {
       tagIndex = await tagsRes.json();
@@ -444,11 +515,8 @@ async function init() {
     buildTagUI(tagIndex);
 
     const urlState = getUrlState();
-
-    // Apply sort
     if (urlState.sort) sortSelect.value = urlState.sort;
 
-    // Apply mode
     filterMode = urlState.mode;
     if (filterMode === "AND") {
       modeAndBtn.classList.add("active");
@@ -458,20 +526,16 @@ async function init() {
       modeAndBtn.classList.remove("active");
     }
 
-    // Apply tags
     selectedTags = new Set(urlState.tags);
     tagListEl.querySelectorAll("input[type=checkbox]").forEach(cb => {
       cb.checked = selectedTags.has(cb.value);
     });
 
-    // Apply page
     page = urlState.page;
 
-    // Sync summary + infinite scroll
     updateTagSummary();
     ensureInfiniteScroll();
 
-    // events
     sortSelect.addEventListener("change", rebuildView);
 
     clearTagsBtn.addEventListener("click", () => {
@@ -509,13 +573,9 @@ async function init() {
     });
     document.addEventListener("keydown", onKey);
 
-    // Make lbMeta render newlines
-    lbMeta.style.whiteSpace = "pre-line";
-
-    // Relayout on resize (important for justified grids)
+    // Critical for pack layouts
     window.addEventListener("resize", scheduleLayout);
 
-    // Finish boot + render view
     isInitializing = false;
     rebuildView({ preservePage: true });
     setUrlState();
