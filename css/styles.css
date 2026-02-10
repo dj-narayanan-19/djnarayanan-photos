@@ -2,13 +2,6 @@
   --maxw: 1400px;
   --gap: 8px;
   --border: 1px solid rgba(0,0,0,0.12);
-
-  /* Collage sizing targets (JS reads these) */
-  --tileArea: 92000;     /* roughly controls "prominence" (bigger = bigger tiles) */
-  --minTileW: 220;
-  --maxTileW: 560;
-  --minTileH: 190;
-  --maxTileH: 520;
 }
 
 * { box-sizing: border-box; }
@@ -65,33 +58,34 @@ select {
 .status { margin: 14px 0; opacity: 0.75; }
 
 /* ----------------------------
-   COLLAGE GRID (packed)
+   Square grid (2–3 per row)
    ---------------------------- */
-.cgrid {
-  position: relative;   /* children absolutely positioned */
-  width: 100%;
-  min-height: 200px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
 }
 
-/* Tile: absolute position, square corners, small gap handled by packer */
-.ctile {
-  position: absolute;
+@media (min-width: 900px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.tile {
+  position: relative;
   overflow: hidden;
   background: #f6f6f6;
   cursor: pointer;
-  border-radius: 0;
+  border-radius: 0;          /* square */
 }
 
-/* No cropping */
-.ctile img {
+/* Square tiles with no rounding; image crops to fill square */
+.tile img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   display: block;
-  object-fit: contain;
 }
-
-/* optional subtle hover */
-.ctile:hover { outline: 1px solid rgba(0,0,0,0.14); outline-offset: -1px; }
 
 .loadmore-wrap { display: flex; justify-content: center; margin: 18px 0 40px; }
 
@@ -114,7 +108,7 @@ select {
 }
 
 /* ----------------------------
-   LIGHTBOX (image fully visible + meta below)
+   Lightbox: guarantee full image visible + meta below
    ---------------------------- */
 .lightbox {
   position: fixed;
@@ -130,6 +124,7 @@ select {
   flex-direction: column;
 }
 
+/* top row (close) */
 .lb-top {
   flex: 0 0 auto;
   padding: 10px;
@@ -147,19 +142,20 @@ select {
   cursor: pointer;
 }
 
-/* Center area */
-.lb-mid {
+/* body: nav | center | nav */
+.lb-body {
   flex: 1 1 auto;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  align-items: center;
+  align-items: stretch;
   gap: 10px;
   padding: 0 10px 12px;
-  min-height: 0;
+  min-height: 0; /* critical */
 }
 
-/* nav buttons do not affect image sizing */
+/* nav buttons centered vertically, but don't affect sizing */
 .lb-nav {
+  align-self: center;
   font-size: 44px;
   width: 50px; height: 60px;
   border-radius: 14px;
@@ -169,39 +165,43 @@ select {
   cursor: pointer;
 }
 
-.lb-stack {
+.lb-center {
   width: min(1100px, 92vw);
-  max-height: calc(100vh - 80px);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-height: 0;
+  min-height: 0; /* critical */
 }
 
+/* Image wrapper takes remaining space after meta; no overflow */
 .lb-imgwrap {
   flex: 1 1 auto;
+  min-height: 0;
   display: grid;
   place-items: center;
   overflow: hidden;
-  min-height: 0;
-}
-
-.lb-img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* always show full image */
-  display: block;
-  border-radius: 0;
   border: 1px solid rgba(255,255,255,0.18);
 }
 
+/* THE KEY: image is bounded by wrapper and uses contain */
+.lb-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Meta always below image, visible, scrollable if needed */
 .lb-meta {
   flex: 0 0 auto;
   padding: 10px 12px;
   color: rgba(255,255,255,0.9);
   font-size: 13px;
   line-height: 1.35;
-  border-top: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.12);
   background: rgba(0,0,0,0.45);
   max-height: 22vh;
   overflow: auto;
@@ -267,12 +267,4 @@ select {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
-}
-
-/* Responsive tuning */
-@media (max-width: 520px) {
-  :root { --tileArea: 76000; --minTileW: 190; --maxTileW: 420; }
-}
-@media (min-width: 1100px) {
-  :root { --tileArea: 104000; --minTileW: 240; --maxTileW: 600; }
 }

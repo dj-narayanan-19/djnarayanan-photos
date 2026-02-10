@@ -15,7 +15,7 @@ const modeOrBtn = document.getElementById("modeOr");
 
 let filterMode = "AND"; // OR
 let selectedTags = new Set();
-let tagCounts = new Map();
+let tagCounts = new Map(); // tag -> count for summary line
 let sentinelEl = null;
 let observer = null;
 let isInitializing = true;
@@ -69,7 +69,10 @@ function hasAnyTag(photo, tags) {
 function applyFilter(arr) {
   const tags = Array.from(selectedTags);
   if (tags.length === 0) return arr;
-  if (filterMode === "AND") return arr.filter(p => hasAllTags(p, tags));
+
+  if (filterMode === "AND") {
+    return arr.filter(p => hasAllTags(p, tags));
+  }
   return arr.filter(p => hasAnyTag(p, tags));
 }
 
@@ -91,6 +94,21 @@ function sortPhotos(arr, mode) {
   return copy;
 }
 
+function rebuildView({ preservePage = false } = {}) {
+  if (!preservePage) page = 1;
+
+  const filtered = applyFilter(allPhotos);
+  viewPhotos = sortPhotos(filtered, sortSelect.value);
+
+  renderedCount = 0;
+  gridEl.innerHTML = "";
+
+  updateTagSummary();
+  render();
+
+  if (!isInitializing) setUrlState();
+}
+
 function updateTagSummary() {
   if (selectedTags.size === 0) {
     tagSummaryEl.textContent = "Select tags…";
@@ -101,206 +119,6 @@ function updateTagSummary() {
   tagSummaryEl.textContent =
     `${tags.length} tag(s): ${formatted.slice(0, 3).join(", ")}${tags.length > 3 ? "…" : ""}`;
 }
-
-function getUrlState() {
-  const sp = new URLSearchParams(window.location.search);
-  const tagsRaw = sp.get("tags") || "";
-  const tags = tagsRaw.split(",").map(t => t.trim()).filter(Boolean);
-  const mode = (sp.get("mode") || "AND").toUpperCase() === "OR" ? "OR" : "AND";
-  const sort = sp.get("sort") || "date_desc";
-  const pageParam = parseInt(sp.get("page") || "1", 10);
-  const p = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
-  return { tags, mode, sort, page: p };
-}
-
-function setUrlState() {
-  const sp = new URLSearchParams(window.location.search);
-  const tagsArr = Array.from(selectedTags);
-  if (tagsArr.length) sp.set("tags", tagsArr.join(","));
-  else sp.delete("tags");
-  sp.set("mode", filterMode);
-  sp.set("sort", sortSelect.value);
-  sp.set("page", String(page));
-  history.replaceState(null, "", `${window.location.pathname}?${sp.toString()}`);
-}
-
-/* -------------------------------------------------------
-   Collage packer (Skyline/bin-packing style)
-   - No rows/columns; keeps order; equal prominence via area
-   ------------------------------------------------------- */
-
-let layoutRaf = 0;
-
-function cssVarPx(name, fallback) {
-  const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-  if (!v) return fallback;
-  const n = parseFloat(v);
-  return Number.isFinite(n) ? n : fallback;
-}
-
-function clamp(x, a, b) {
-  return Math.max(a, Math.min(b, x));
-}
-
-function scheduleLayout() {
-  if (layoutRaf) return;
-  layoutRaf = requestAnimationFrame(() => {
-    layoutRaf = 0;
-    layoutCollagePacked();
-  });
-}
-
-function layoutCollagePacked() {
-  const tiles = Array.from(gridEl.querySelectorAll(".ctile"));
-  if (!tiles.length) {
-    gridEl.style.height = "0px";
-    return;
-  }
-
-  const gap = cssVarPx("--gap", 8);
-  const area = cssVarPx("--tileArea", 92000);
-  const minW = cssVarPx("--minTileW", 220);
-  const maxW = cssVarPx("--maxTileW", 560);
-  const minH = cssVarPx("--minTileH", 190);
-  const maxH = cssVarPx("--maxTileH", 520);
-
-  const cw = gridEl.clientWidth;
-  if (!cw || cw < 200) return;
-
-  // Skyline nodes: each node is { x, y, w }
-  // Interpretation: from x..x+w, the skyline height is y
-  let skyline = [{ x: 0, y: 0, w: cw }];
-
-  function mergeSkyline(nodes) {
-    // merge adjacent nodes with same y
-    const out = [];
-    for (const n of nodes) {
-      if (!out.length) out.push({ ...n });
-      else {
-        const last = out[out.length - 1];
-        if (Math.abs(last.y - n.y) < 0.5 && Math.abs(last.x + last.w - n.x) < 0.5) {
-          last.w += n.w;
-        } else {
-          out.push({ ...n });
-        }
-      }
-    }
-    return out;
-  }
-
-  function findPosition(w, h) {
-    // Find the position (x,y) with minimal y where rect fits.
-    // We scan skyline nodes as candidate x positions.
-    let best = null;
-
-    for (let i = 0; i < skyline.length; i++) {
-      const start = skyline[i].x;
-      if (start + w > cw) continue;
-
-      // compute y at this start by scanning segments covering [start, start+w)
-      let x = start;
-      let y = 0;
-      let remaining = w;
-      let j = i;
-
-      y = skyline[i].y;
-
-      while (remaining > 0 && j < skyline.length) {
-        const seg = skyline[j];
-        if (seg.x > x + 0.5) break; // gap in skyline coverage (shouldn't happen)
-        y = Math.max(y, seg.y);
-        const consume = Math.min(remaining, seg.x + seg.w - x);
-        x += consume;
-        remaining -= consume;
-        j += 1;
-      }
-
-      if (remaining > 0) continue; // didn't cover width
-
-      // Candidate position
-      const cand = { x: start, y };
-
-      if (!best) best = cand;
-      else {
-        if (cand.y < best.y - 0.5) best = cand;
-        else if (Math.abs(cand.y - best.y) < 0.5 && cand.x < best.x) best = cand;
-      }
-    }
-
-    return best;
-  }
-
-  function addRect(x, y, w, h) {
-    // Insert a skyline segment at (x, y+h) of width w, removing overlaps.
-    const newY = y + h;
-
-    const out = [];
-    for (const seg of skyline) {
-      const segEnd = seg.x + seg.w;
-      const rectEnd = x + w;
-
-      // No overlap
-      if (segEnd <= x || seg.x >= rectEnd) {
-        out.push(seg);
-        continue;
-      }
-
-      // Left remainder
-      if (seg.x < x) {
-        out.push({ x: seg.x, y: seg.y, w: x - seg.x });
-      }
-
-      // Right remainder
-      if (segEnd > rectEnd) {
-        out.push({ x: rectEnd, y: seg.y, w: segEnd - rectEnd });
-      }
-    }
-
-    // Add the new segment
-    out.push({ x, y: newY, w });
-
-    // Sort by x and merge
-    out.sort((a, b) => a.x - b.x);
-    skyline = mergeSkyline(out);
-  }
-
-  let maxBottom = 0;
-
-  for (const tile of tiles) {
-    // Aspect ratio from loaded image (w/h). If unknown, assume 3:2
-    let ar = parseFloat(tile.dataset.ar || "1.5");
-    if (!Number.isFinite(ar) || ar <= 0.05) ar = 1.5;
-
-    // Equal prominence: constant area => w*h ≈ area, with ar = w/h
-    // => w = sqrt(area * ar), h = w/ar
-    let w = Math.sqrt(area * ar);
-    let h = w / ar;
-
-    // Clamp sizes to keep things sane
-    w = clamp(w, minW, maxW);
-    h = clamp(h, minH, maxH);
-
-    // Add gap padding by inflating rectangle during packing,
-    // but render actual tile at (w,h) and leave gap to the right/bottom.
-    const packW = Math.min(w + gap, cw);
-    const packH = h + gap;
-
-    const pos = findPosition(packW, packH) || { x: 0, y: maxBottom };
-
-    // Apply actual tile position (no need to add gap on left/top; we pack with extra)
-    tile.style.left = `${pos.x}px`;
-    tile.style.top = `${pos.y}px`;
-    tile.style.width = `${w}px`;
-    tile.style.height = `${h}px`;
-
-    addRect(pos.x, pos.y, packW, packH);
-    maxBottom = Math.max(maxBottom, pos.y + packH);
-  }
-
-  gridEl.style.height = `${Math.ceil(maxBottom)}px`;
-}
-
-/* ------------------------------------------------------- */
 
 let renderedCount = 0;
 
@@ -319,23 +137,14 @@ function render() {
 
   for (let i = renderedCount; i < target; i++) {
     const p = viewPhotos[i];
-
     const tile = document.createElement("div");
-    tile.className = "ctile";
+    tile.className = "tile";
     tile.dataset.index = String(i);
-    tile.dataset.ar = "1.5"; // placeholder until thumb loads
 
     const img = document.createElement("img");
     img.loading = "lazy";
     img.src = p.paths.thumb;
     img.alt = p.meta?.title ?? "";
-
-    img.addEventListener("load", () => {
-      if (img.naturalWidth && img.naturalHeight) {
-        tile.dataset.ar = String(img.naturalWidth / img.naturalHeight);
-        scheduleLayout();
-      }
-    });
 
     tile.appendChild(img);
     tile.addEventListener("click", () => openLightbox(i));
@@ -343,29 +152,14 @@ function render() {
   }
 
   renderedCount = target;
-  scheduleLayout();
-
   loadMoreBtn.style.display = renderedCount < total ? "inline-flex" : "none";
-}
-
-function rebuildView({ preservePage = false } = {}) {
-  if (!preservePage) page = 1;
-
-  const filtered = applyFilter(allPhotos);
-  viewPhotos = sortPhotos(filtered, sortSelect.value);
-
-  renderedCount = 0;
-  gridEl.innerHTML = "";
-
-  updateTagSummary();
-  render();
-
-  if (!isInitializing) setUrlState();
 }
 
 function openLightbox(index) {
   lbIndex = index;
   const p = viewPhotos[lbIndex];
+
+  // set src and clear any previous sizing quirks
   lbImg.src = p.paths.display;
 
   const date = formatDateReadable(p?.exif?.dateTaken);
@@ -457,6 +251,38 @@ function buildTagUI(tagIndex) {
   }
 }
 
+function getUrlState() {
+  const sp = new URLSearchParams(window.location.search);
+
+  const tagsRaw = sp.get("tags") || "";
+  const tags = tagsRaw
+    .split(",")
+    .map(t => t.trim())
+    .filter(Boolean);
+
+  const mode = (sp.get("mode") || "AND").toUpperCase() === "OR" ? "OR" : "AND";
+  const sort = sp.get("sort") || "date_desc";
+
+  const pageParam = parseInt(sp.get("page") || "1", 10);
+  const p = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
+
+  return { tags, mode, sort, page: p };
+}
+
+function setUrlState() {
+  const sp = new URLSearchParams(window.location.search);
+
+  const tagsArr = Array.from(selectedTags);
+  if (tagsArr.length) sp.set("tags", tagsArr.join(","));
+  else sp.delete("tags");
+
+  sp.set("mode", filterMode);
+  sp.set("sort", sortSelect.value);
+  sp.set("page", String(page));
+
+  history.replaceState(null, "", `${window.location.pathname}?${sp.toString()}`);
+}
+
 function ensureInfiniteScroll() {
   if (!sentinelEl) {
     sentinelEl = document.createElement("div");
@@ -515,6 +341,7 @@ async function init() {
     buildTagUI(tagIndex);
 
     const urlState = getUrlState();
+
     if (urlState.sort) sortSelect.value = urlState.sort;
 
     filterMode = urlState.mode;
@@ -568,13 +395,11 @@ async function init() {
     lbPrev.addEventListener("click", () => lbStep(-1));
     lbNext.addEventListener("click", () => lbStep(1));
 
+    // clicking the dark background closes
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) closeLightbox();
     });
     document.addEventListener("keydown", onKey);
-
-    // Critical for pack layouts
-    window.addEventListener("resize", scheduleLayout);
 
     isInitializing = false;
     rebuildView({ preservePage: true });
