@@ -1,3 +1,5 @@
+/* css/styles.css */
+
 :root {
   --maxw: 1400px;
   --gap: 8px;
@@ -109,6 +111,10 @@ select {
   inset: 0;
   background: rgba(0,0,0,0.92);
   z-index: 100;
+
+  /* Optional mobile polish */
+  overscroll-behavior: contain;
+  touch-action: pan-y; /* we handle horizontal swipe; allow vertical scroll */
 }
 .lightbox.hidden { display: none; }
 
@@ -116,6 +122,11 @@ select {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Use dynamic viewport height when available (better on mobile browsers) */
+@supports (height: 100dvh) {
+  .lb-shell { height: 100dvh; }
 }
 
 .lb-top {
@@ -181,6 +192,10 @@ select {
   max-height: calc(100vh - 220px);
 }
 
+@supports (height: 100dvh) {
+  .lb-imgwrap { max-height: calc(100dvh - 220px); }
+}
+
 .lb-img {
   display: block;
   object-fit: contain;
@@ -195,6 +210,10 @@ select {
   min-height: 0;
 }
 
+@supports (height: 100dvh) {
+  .lb-img { max-height: calc(100dvh - 220px); }
+}
+
 .lb-meta {
   padding: 10px 12px;
   color: rgba(255,255,255,0.9);
@@ -205,6 +224,20 @@ select {
   max-height: 22vh;
   overflow: auto;
   white-space: pre-line;
+}
+
+/* Mobile: hide nav arrows (use swipe) */
+@media (max-width: 700px) {
+  .lb-nav { display: none; }
+  .lb-body {
+    grid-template-columns: 1fr; /* no side columns */
+    gap: 0;                    /* remove nav spacing */
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .lb-center {
+    width: 100%;
+  }
 }
 
 /* Tag dropdown + AND/OR toggle */

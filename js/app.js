@@ -1,3 +1,5 @@
+// js/app.js
+
 const PHOTOS_URL = "data/photos.json";
 const TAGS_URL = "data/tags.json";
 
@@ -70,9 +72,7 @@ function applyFilter(arr) {
   const tags = Array.from(selectedTags);
   if (tags.length === 0) return arr;
 
-  if (filterMode === "AND") {
-    return arr.filter(p => hasAllTags(p, tags));
-  }
+  if (filterMode === "AND") return arr.filter(p => hasAllTags(p, tags));
   return arr.filter(p => hasAnyTag(p, tags));
 }
 
@@ -195,6 +195,48 @@ function closeLightbox() {
   lightbox.setAttribute("aria-hidden", "true");
   lbImg.src = "";
   lbIndex = -1;
+}
+
+function isMobileLike() {
+  return window.matchMedia && window.matchMedia("(max-width: 700px)").matches;
+}
+
+// Swipe support
+let swipeStartX = 0;
+let swipeStartY = 0;
+let swipeActive = false;
+
+function onLbTouchStart(e) {
+  if (!e.touches || e.touches.length !== 1) return;
+  const t = e.touches[0];
+  swipeStartX = t.clientX;
+  swipeStartY = t.clientY;
+  swipeActive = true;
+}
+
+function onLbTouchMove(e) {
+  if (!swipeActive || !e.touches || e.touches.length !== 1) return;
+  const t = e.touches[0];
+  const dx = Math.abs(t.clientX - swipeStartX);
+  const dy = Math.abs(t.clientY - swipeStartY);
+  // prevent page swipe when clearly horizontal
+  if (dx > dy && dx > 10) e.preventDefault();
+}
+
+function onLbTouchEnd(e) {
+  if (!swipeActive) return;
+  swipeActive = false;
+
+  const changed = e.changedTouches && e.changedTouches[0];
+  if (!changed) return;
+
+  const dx = changed.clientX - swipeStartX;
+  const dy = changed.clientY - swipeStartY;
+
+  if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+
+  if (dx < 0) lbStep(1);   // swipe left = next
+  else lbStep(-1);         // swipe right = prev
 }
 
 function lbStep(dir) {
@@ -390,9 +432,39 @@ async function init() {
     lbPrev.addEventListener("click", () => lbStep(-1));
     lbNext.addEventListener("click", () => lbStep(1));
 
+    // Swipe support on mobile
+    lightbox.addEventListener("touchstart", onLbTouchStart, { passive: true });
+    lightbox.addEventListener("touchmove", onLbTouchMove, { passive: false });
+    lightbox.addEventListener("touchend", onLbTouchEnd, { passive: true });
+
+    // Single click handler:
+    // - backdrop click closes
+    // - mobile tap zones navigate
     lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) closeLightbox();
+      if (lightbox.classList.contains("hidden")) return;
+
+      // backdrop closes
+      if (e.target === lightbox) {
+        closeLightbox();
+        return;
+      }
+
+      // tap zones (mobile only)
+      if (!isMobileLike()) return;
+
+      const el = e.target;
+      if (el.closest && (el.closest(".lb-close") || el.closest(".lb-meta"))) return;
+
+      const center = document.querySelector(".lb-center");
+      if (!center || !center.contains(el)) return;
+
+      const x = e.clientX;
+      const w = window.innerWidth;
+
+      if (x < w * 0.35) lbStep(-1);
+      else if (x > w * 0.65) lbStep(1);
     });
+
     document.addEventListener("keydown", onKey);
 
     isInitializing = false;
