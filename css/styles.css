@@ -372,24 +372,39 @@ body{
 /* --------------------
    Mobile drawer + lightbox arrows hidden
 -------------------- */
+
+/* Backdrop sits BELOW the sidebar so the sidebar stays clickable */
 .drawer-backdrop{
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.30);
   z-index: 25;
+  display: block;
 }
 .drawer-backdrop.hidden{ display:none; }
 
 @media (max-width: 860px){
   .m-topbar{ display:flex; }
 
+  /* Sidebar must be above the backdrop */
   .sidebar{
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: var(--sidew);
+    background: var(--bg);
+    border-right: 1px solid var(--line);
+    z-index: 40; /* IMPORTANT: higher than .drawer-backdrop */
+
     transform: translateX(-102%);
     transition: transform 220ms ease;
     box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .sidebar.open{ transform: translateX(0); }
 
+  /* Main content goes full width on mobile */
   .main{
     margin-left: 0;
     padding: 16px 12px 60px;
@@ -400,6 +415,7 @@ body{
     gap: 16px;
   }
 
+  /* Lightbox: hide arrows on mobile (use swipe) */
   .lb-nav{ display:none; }
   .lb-body{
     grid-template-columns: 1fr;
