@@ -3,52 +3,70 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gallery</title>
-  <link rel="stylesheet" href="css/styles.css?v=10" />
+  <title>Dhananjay Narayanan — Gallery</title>
+  <link rel="stylesheet" href="css/styles.css?v=11" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="index.html">← Home</a>
 
-      <div class="controls">
-        <label class="control">
-          <span>Sort</span>
-          <select id="sortSelect">
+  <!-- Mobile top bar -->
+  <header class="m-topbar">
+    <button id="menuBtn" class="m-menu" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="m-title">Dhananjay Narayanan</div>
+  </header>
+
+  <!-- Sidebar (desktop) / Drawer (mobile) -->
+  <aside id="sidebar" class="sidebar" aria-label="Sidebar">
+    <div class="side-inner">
+      <div class="side-title">Dhananjay Narayanan</div>
+
+      <nav class="side-nav">
+        <div class="side-links">
+          <a class="side-link" href="index.html">Home</a>
+          <a class="side-link" href="#" aria-disabled="true">About</a>
+          <a class="side-link" href="#" aria-disabled="true">Contact</a>
+        </div>
+
+        <div class="side-section">
+          <div class="side-section-title">Sort</div>
+          <select id="sortSelect" class="side-select">
             <option value="date_desc" selected>Date (new → old)</option>
             <option value="date_asc">Date (old → new)</option>
             <option value="random">Random</option>
           </select>
-        </label>
+        </div>
 
-        <div class="control">
-          <span>Match</span>
+        <div class="side-section">
+          <div class="side-section-title">Match</div>
           <div class="toggle">
             <button id="modeAnd" class="togglebtn active" type="button">AND</button>
             <button id="modeOr" class="togglebtn" type="button">OR</button>
           </div>
         </div>
 
-        <div class="control" style="min-width: 260px;">
-          <span>Tags</span>
-          <details id="tagDropdown" class="dropdown">
-            <summary id="tagSummary">Select tags…</summary>
-            <div id="tagList" class="dropdown-panel"></div>
-            <div class="dropdown-actions">
-              <button id="clearTagsBtn" class="button secondary" type="button">Clear</button>
-            </div>
-          </details>
-        </div>
-      </div>
-    </div>
-  </header>
+        <div class="side-section">
+          <div class="side-section-head">
+            <div class="side-section-title">Tags</div>
+            <button id="clearTagsBtn" class="clearbtn" type="button">Clear</button>
+          </div>
 
-  <main class="container">
+          <div id="tagMenu" class="tagmenu"></div>
+        </div>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Mobile drawer backdrop -->
+  <div id="drawerBackdrop" class="drawer-backdrop hidden" aria-hidden="true"></div>
+
+  <!-- Main content -->
+  <main class="main">
     <div id="status" class="status">Loading…</div>
     <div id="grid" class="grid"></div>
 
     <div class="loadmore-wrap">
-      <button id="loadMoreBtn" class="button secondary">Load more</button>
+      <button id="loadMoreBtn" class="button secondary" type="button">Load more</button>
     </div>
   </main>
 

@@ -1,5 +1,3 @@
-// js/app.js
-
 const PHOTOS_URL = "data/photos.json";
 const TAGS_URL = "data/tags.json";
 
@@ -8,16 +6,20 @@ const statusEl = document.getElementById("status");
 const sortSelect = document.getElementById("sortSelect");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
 
-// Filter UI
-const tagListEl = document.getElementById("tagList");
-const tagSummaryEl = document.getElementById("tagSummary");
+// Sidebar / drawer
+const sidebarEl = document.getElementById("sidebar");
+const tagMenuEl = document.getElementById("tagMenu");
 const clearTagsBtn = document.getElementById("clearTagsBtn");
+const menuBtn = document.getElementById("menuBtn");
+const drawerBackdrop = document.getElementById("drawerBackdrop");
+
+// AND/OR
 const modeAndBtn = document.getElementById("modeAnd");
 const modeOrBtn = document.getElementById("modeOr");
-
 let filterMode = "AND"; // OR
-let selectedTags = new Set();
-let tagCounts = new Map(); // tag -> count for summary line
+let selectedTags = new Set(); // multi-select
+
+let tagCounts = new Map();
 let sentinelEl = null;
 let observer = null;
 let isInitializing = true;
@@ -38,6 +40,7 @@ let page = 1;
 let allPhotos = [];
 let viewPhotos = [];
 let lbIndex = -1;
+let renderedCount = 0;
 
 function parseDateTaken(p) {
   const dt = p?.exif?.dateTaken;
@@ -78,6 +81,7 @@ function applyFilter(arr) {
 
 function sortPhotos(arr, mode) {
   const copy = [...arr];
+
   if (mode === "random") {
     for (let i = copy.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -91,6 +95,7 @@ function sortPhotos(arr, mode) {
     const tb = parseDateTaken(b) ?? 0;
     return mode === "date_asc" ? (ta - tb) : (tb - ta);
   });
+
   return copy;
 }
 
@@ -103,24 +108,11 @@ function rebuildView({ preservePage = false } = {}) {
   renderedCount = 0;
   gridEl.innerHTML = "";
 
-  updateTagSummary();
   render();
 
   if (!isInitializing) setUrlState();
+  syncTagMenuUI();
 }
-
-function updateTagSummary() {
-  if (selectedTags.size === 0) {
-    tagSummaryEl.textContent = "Select tags…";
-    return;
-  }
-  const tags = Array.from(selectedTags);
-  const formatted = tags.map(t => `${t} (${tagCounts.get(t) ?? 0})`);
-  tagSummaryEl.textContent =
-    `${tags.length} tag(s): ${formatted.slice(0, 3).join(", ")}${tags.length > 3 ? "…" : ""}`;
-}
-
-let renderedCount = 0;
 
 function render() {
   const total = viewPhotos.length;
@@ -137,6 +129,7 @@ function render() {
 
   for (let i = renderedCount; i < target; i++) {
     const p = viewPhotos[i];
+
     const tile = document.createElement("div");
     tile.className = "tile";
     tile.dataset.index = String(i);
@@ -197,11 +190,20 @@ function closeLightbox() {
   lbIndex = -1;
 }
 
+function lbStep(dir) {
+  if (lbIndex < 0) return;
+  const next = lbIndex + dir;
+  if (next < 0 || next >= viewPhotos.length) return;
+  openLightbox(next);
+}
+
 function isMobileLike() {
   return window.matchMedia && window.matchMedia("(max-width: 700px)").matches;
 }
 
-// Swipe support
+/* -------------------------
+   Swipe support (lightbox)
+------------------------- */
 let swipeStartX = 0;
 let swipeStartY = 0;
 let swipeActive = false;
@@ -219,7 +221,6 @@ function onLbTouchMove(e) {
   const t = e.touches[0];
   const dx = Math.abs(t.clientX - swipeStartX);
   const dy = Math.abs(t.clientY - swipeStartY);
-  // prevent page swipe when clearly horizontal
   if (dx > dy && dx > 10) e.preventDefault();
 }
 
@@ -235,15 +236,8 @@ function onLbTouchEnd(e) {
 
   if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
 
-  if (dx < 0) lbStep(1);   // swipe left = next
-  else lbStep(-1);         // swipe right = prev
-}
-
-function lbStep(dir) {
-  if (lbIndex < 0) return;
-  const next = lbIndex + dir;
-  if (next < 0 || next >= viewPhotos.length) return;
-  openLightbox(next);
+  if (dx < 0) lbStep(1);
+  else lbStep(-1);
 }
 
 function onKey(e) {
@@ -253,44 +247,60 @@ function onKey(e) {
   if (e.key === "ArrowRight") lbStep(1);
 }
 
-function buildTagUI(tagIndex) {
-  tagListEl.innerHTML = "";
+/* -------------------------
+   Tag menu (multi-select)
+------------------------- */
+function buildTagMenu(tagIndex) {
+  tagMenuEl.innerHTML = "";
 
   const tags = (tagIndex?.tags || [])
     .slice()
     .sort((a, b) => (b.count ?? 0) - (a.count ?? 0) || String(a.name).localeCompare(String(b.name)));
 
   for (const t of tags) {
-    const row = document.createElement("div");
-    row.className = "tagrow";
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "tagitem";
+    btn.dataset.tag = t.name;
 
-    const lab = document.createElement("label");
-    const cb = document.createElement("input");
-    cb.type = "checkbox";
-    cb.value = t.name;
-    cb.checked = selectedTags.has(t.name);
-    cb.addEventListener("change", () => {
-      if (cb.checked) selectedTags.add(t.name);
-      else selectedTags.delete(t.name);
+    const left = document.createElement("span");
+    left.textContent = t.name;
+
+    const right = document.createElement("span");
+    right.className = "tagcount";
+    right.textContent = String(t.count ?? 0);
+
+    btn.appendChild(left);
+    btn.appendChild(right);
+
+    btn.addEventListener("click", () => {
+      if (selectedTags.has(t.name)) selectedTags.delete(t.name);
+      else selectedTags.add(t.name);
+
       rebuildView();
+
+      // if on mobile, keep drawer open (multi-select UX is nicer),
+      // but you can uncomment to close automatically:
+      // if (isDrawerMobile()) closeDrawer();
     });
 
-    const name = document.createElement("span");
-    name.textContent = t.name;
-
-    lab.appendChild(cb);
-    lab.appendChild(name);
-
-    const count = document.createElement("span");
-    count.className = "tagcount";
-    count.textContent = String(t.count ?? 0);
-
-    row.appendChild(lab);
-    row.appendChild(count);
-    tagListEl.appendChild(row);
+    tagMenuEl.appendChild(btn);
   }
+
+  syncTagMenuUI();
 }
 
+function syncTagMenuUI() {
+  tagMenuEl.querySelectorAll(".tagitem").forEach(el => {
+    const tag = el.dataset.tag;
+    el.classList.toggle("active", selectedTags.has(tag));
+  });
+}
+
+/* -------------------------
+   URL state (updated format)
+   ?tags=a,b&mode=AND&sort=date_desc&page=1
+------------------------- */
 function getUrlState() {
   const sp = new URLSearchParams(window.location.search);
 
@@ -320,6 +330,9 @@ function setUrlState() {
   history.replaceState(null, "", `${window.location.pathname}?${sp.toString()}`);
 }
 
+/* -------------------------
+   Infinite scroll
+------------------------- */
 function ensureInfiniteScroll() {
   if (!sentinelEl) {
     sentinelEl = document.createElement("div");
@@ -346,12 +359,41 @@ function ensureInfiniteScroll() {
         if (!isInitializing) setUrlState();
       }
     },
-    { root: null, rootMargin: "800px 0px", threshold: 0.01 }
+    { root: null, rootMargin: "900px 0px", threshold: 0.01 }
   );
 
   observer.observe(sentinelEl);
 }
 
+/* -------------------------
+   Mobile drawer
+------------------------- */
+function isDrawerMobile() {
+  return window.matchMedia && window.matchMedia("(max-width: 860px)").matches;
+}
+
+function openDrawer() {
+  sidebarEl.classList.add("open");
+  drawerBackdrop.classList.remove("hidden");
+  drawerBackdrop.setAttribute("aria-hidden", "false");
+  menuBtn?.setAttribute("aria-expanded", "true");
+}
+
+function closeDrawer() {
+  sidebarEl.classList.remove("open");
+  drawerBackdrop.classList.add("hidden");
+  drawerBackdrop.setAttribute("aria-hidden", "true");
+  menuBtn?.setAttribute("aria-expanded", "false");
+}
+
+function toggleDrawer() {
+  if (sidebarEl.classList.contains("open")) closeDrawer();
+  else openDrawer();
+}
+
+/* -------------------------
+   Init
+------------------------- */
 async function init() {
   try {
     const [photosRes, tagsRes] = await Promise.all([
@@ -375,7 +417,7 @@ async function init() {
     }
 
     tagCounts = new Map((tagIndex.tags || []).map(t => [t.name, t.count ?? 0]));
-    buildTagUI(tagIndex);
+    buildTagMenu(tagIndex);
 
     const urlState = getUrlState();
 
@@ -391,20 +433,17 @@ async function init() {
     }
 
     selectedTags = new Set(urlState.tags);
-    tagListEl.querySelectorAll("input[type=checkbox]").forEach(cb => {
-      cb.checked = selectedTags.has(cb.value);
-    });
+    syncTagMenuUI();
 
     page = urlState.page;
 
-    updateTagSummary();
     ensureInfiniteScroll();
 
-    sortSelect.addEventListener("change", rebuildView);
+    // events
+    sortSelect.addEventListener("change", () => rebuildView());
 
     clearTagsBtn.addEventListener("click", () => {
       selectedTags.clear();
-      tagListEl.querySelectorAll("input[type=checkbox]").forEach(cb => cb.checked = false);
       rebuildView();
     });
 
@@ -428,6 +467,11 @@ async function init() {
       if (!isInitializing) setUrlState();
     });
 
+    // drawer events
+    menuBtn?.addEventListener("click", toggleDrawer);
+    drawerBackdrop.addEventListener("click", closeDrawer);
+
+    // lightbox events
     lbClose.addEventListener("click", closeLightbox);
     lbPrev.addEventListener("click", () => lbStep(-1));
     lbNext.addEventListener("click", () => lbStep(1));
