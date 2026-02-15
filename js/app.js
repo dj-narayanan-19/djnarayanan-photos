@@ -33,7 +33,7 @@ const lbPrev = document.getElementById("lbPrev");
 const lbNext = document.getElementById("lbNext");
 
 // pagination
-const PAGE_SIZE = 60;
+const PAGE_SIZE = 30; // fewer per page since display images are heavier
 let page = 1;
 
 // data
@@ -136,7 +136,10 @@ function render() {
 
     const img = document.createElement("img");
     img.loading = "lazy";
-    img.src = p.paths.thumb;
+
+    // ✅ use display images for crispness
+    img.src = p.paths.display;
+
     img.alt = p.meta?.title ?? "";
 
     tile.appendChild(img);
@@ -201,9 +204,7 @@ function isMobileLike() {
   return window.matchMedia && window.matchMedia("(max-width: 700px)").matches;
 }
 
-/* -------------------------
-   Swipe support (lightbox)
-------------------------- */
+/* Swipe support (lightbox) */
 let swipeStartX = 0;
 let swipeStartY = 0;
 let swipeActive = false;
@@ -247,9 +248,7 @@ function onKey(e) {
   if (e.key === "ArrowRight") lbStep(1);
 }
 
-/* -------------------------
-   Tag menu (multi-select)
-------------------------- */
+/* Tag menu (multi-select) */
 function buildTagMenu(tagIndex) {
   tagMenuEl.innerHTML = "";
 
@@ -278,10 +277,6 @@ function buildTagMenu(tagIndex) {
       else selectedTags.add(t.name);
 
       rebuildView();
-
-      // if on mobile, keep drawer open (multi-select UX is nicer),
-      // but you can uncomment to close automatically:
-      // if (isDrawerMobile()) closeDrawer();
     });
 
     tagMenuEl.appendChild(btn);
@@ -297,10 +292,7 @@ function syncTagMenuUI() {
   });
 }
 
-/* -------------------------
-   URL state (updated format)
-   ?tags=a,b&mode=AND&sort=date_desc&page=1
-------------------------- */
+/* URL state: ?tags=a,b&mode=AND&sort=...&page=... */
 function getUrlState() {
   const sp = new URLSearchParams(window.location.search);
 
@@ -330,9 +322,7 @@ function setUrlState() {
   history.replaceState(null, "", `${window.location.pathname}?${sp.toString()}`);
 }
 
-/* -------------------------
-   Infinite scroll
-------------------------- */
+/* Infinite scroll */
 function ensureInfiniteScroll() {
   if (!sentinelEl) {
     sentinelEl = document.createElement("div");
@@ -359,15 +349,13 @@ function ensureInfiniteScroll() {
         if (!isInitializing) setUrlState();
       }
     },
-    { root: null, rootMargin: "900px 0px", threshold: 0.01 }
+    { root: null, rootMargin: "1200px 0px", threshold: 0.01 }
   );
 
   observer.observe(sentinelEl);
 }
 
-/* -------------------------
-   Mobile drawer
-------------------------- */
+/* Mobile drawer */
 function isDrawerMobile() {
   return window.matchMedia && window.matchMedia("(max-width: 860px)").matches;
 }
@@ -391,9 +379,6 @@ function toggleDrawer() {
   else openDrawer();
 }
 
-/* -------------------------
-   Init
-------------------------- */
 async function init() {
   try {
     const [photosRes, tagsRes] = await Promise.all([
@@ -439,7 +424,6 @@ async function init() {
 
     ensureInfiniteScroll();
 
-    // events
     sortSelect.addEventListener("change", () => rebuildView());
 
     clearTagsBtn.addEventListener("click", () => {
@@ -481,19 +465,15 @@ async function init() {
     lightbox.addEventListener("touchmove", onLbTouchMove, { passive: false });
     lightbox.addEventListener("touchend", onLbTouchEnd, { passive: true });
 
-    // Single click handler:
-    // - backdrop click closes
-    // - mobile tap zones navigate
+    // backdrop closes + tap zones navigate
     lightbox.addEventListener("click", (e) => {
       if (lightbox.classList.contains("hidden")) return;
 
-      // backdrop closes
       if (e.target === lightbox) {
         closeLightbox();
         return;
       }
 
-      // tap zones (mobile only)
       if (!isMobileLike()) return;
 
       const el = e.target;
