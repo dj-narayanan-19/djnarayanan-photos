@@ -1,24 +1,20 @@
 #!/usr/bin/env python3
 """
-Ingest + Local Tagger UI (Flask) with stable identity + validation.
+Ingest + Local Tagger UI (Flask) with stable identity + validation + safe reruns.
 
-Features:
-- Stable identity using SHA-256 content hash (source.hash)
-- Filename collision safe (hash-based)
-- Explicit "original offline" metadata:
-  - source.originalPathHint (local-only)
-  - source.importedAt
-  - source.sizeBytes
-  - source.mtime
-- Backups before every write to photos.json
-- --no-tag mode: update metadata/hashes + create missing derivatives without retagging
-- "Validate & Exit" button inside UI that runs validation and shuts down server
-- Verbose terminal progress output
+Key improvements:
+- Duplicate detection uses ORIGINAL SHA-256 when possible
+- Secondary duplicate detection using legacy fingerprint (filename + sizeBytes + mtime)
+  to upgrade entries that were previously keyed by display-hash
+- --no-tag backfill prefers original matching; display-hash fallback only when unavoidable
+- --reset wipes repo-generated photo state (assets/thumbs, assets/display, data/photos.json, data/tags.json)
+  with backups, then proceeds with ingest.
 
 Usage:
   source .venv/bin/activate
   python3 tools/ingest.py --originals "/path/to/originals" --repo-root .
   python3 tools/ingest.py --originals "/path/to/originals" --repo-root . --no-tag
+  python3 tools/ingest.py --originals "/path/to/originals" --repo-root . --reset
 """
 
 from __future__ import annotations
@@ -28,6 +24,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import sys
 import time
 from dataclasses import dataclass
@@ -139,9 +136,24 @@ def parse_fingerprint(fp: str) -> Tuple[Optional[int], Optional[int]]:
         return None, None
 
 
-def fingerprint_for_file(p: Path) -> str:
-    st = p.stat()
-    return f"size:{st.st_size}_mtime:{int(st.st_mtime)}"
+def fingerprint_tuple_from_entry(src: Dict[str, Any]) -> Optional[Tuple[str, int, int]]:
+    """
+    Returns (originalFilename, sizeBytes, mtime) if present, else tries legacy fingerprint.
+    """
+    fn = src.get("originalFilename")
+    sizeb = src.get("sizeBytes")
+    mtime = src.get("mtime")
+
+    if isinstance(fn, str) and isinstance(sizeb, int) and isinstance(mtime, int):
+        return (fn, sizeb, mtime)
+
+    fp = src.get("fingerprint")
+    if isinstance(fn, str) and isinstance(fp, str):
+        s, t = parse_fingerprint(fp)
+        if s is not None and t is not None:
+            return (fn, s, t)
+
+    return None
 
 
 # ----------------------------
@@ -212,9 +224,6 @@ def get_exif_fields(img: Image.Image) -> Dict[str, Optional[str]]:
         make = get("Make")
         model = get("Model")
         lens = get("LensModel") or get("LensSpecification")
-
-        for vname, v in [("make", make), ("model", model), ("lens", lens)]:
-            pass
 
         if isinstance(make, bytes):
             make = make.decode("utf-8", errors="ignore")
@@ -544,10 +553,8 @@ TEMPLATE = r"""
     }
   }
 
-  // default tags: ONLY cameraModel slug if present (no auto film/digital)
   if (defaultTags && defaultTags.length) setTags(defaultTags);
 
-  // Copy previous tags REPLACES current tags
   copyPrevBtn.addEventListener("click", async () => {
     const res = await fetch("/api/prev");
     const prev = await res.json();
@@ -642,7 +649,6 @@ def create_app(
         return "tags=" + " ".join(tags) if tags else "tags=—"
 
     def write_photos_json():
-        # backup + write + tag index
         bak = backup_file(photos_json_path)
         if bak:
             print(f"[backup] Wrote {bak.name}")
@@ -650,7 +656,6 @@ def create_app(
         write_tag_index(repo_root, photos_json)
 
     def shutdown_server():
-        # Werkzeug shutdown hook
         func = request.environ.get("werkzeug.server.shutdown")
         if func:
             func()
@@ -669,7 +674,6 @@ def create_app(
         item = pending[idx]
 
         default_tags: List[str] = []
-        # keep only camera model slug as default (no auto film/digital)
         if item.exif.get("cameraModel"):
             default_tags.append(slugify(item.exif["cameraModel"]))
         default_tags = normalize_tag_list(default_tags)
@@ -722,7 +726,6 @@ def create_app(
         replaced = False
         for i, ph in enumerate(photos):
             if ph.get("id") == it.id:
-                # preserve existing tags if present (in case of re-save)
                 entry["tags"] = tags if tags else ph.get("tags", [])
                 photos[i] = entry
                 replaced = True
@@ -744,7 +747,6 @@ def create_app(
     def validate_exit():
         nonlocal validation_cache
         report = validate_repo(repo_root, photos_json)
-        # cache pretty report for display
         lines = []
         lines.append(f"Errors ({len(report['errors'])}):")
         lines += [f"  - {e}" for e in report["errors"]]
@@ -753,7 +755,6 @@ def create_app(
         lines += [f"  - {w}" for w in report["warnings"]]
         validation_cache = "\n".join(lines)
 
-        # render done page including report, then shutdown
         resp = render_template_string(DONE_TEMPLATE, report=validation_cache)
         shutdown_server()
         return resp
@@ -767,7 +768,7 @@ def create_app(
 
 
 # ----------------------------
-# Scanning + collision-safe mapping
+# Scanning + derivatives
 # ----------------------------
 def scan_originals(originals_dir: Path) -> List[Path]:
     paths = []
@@ -795,19 +796,59 @@ def generate_derivatives(repo_root: Path, original_path: Path, photo_id: str,
     return thumb_rel, display_rel, exif_fields
 
 
-def ensure_derivatives_exist(repo_root: Path, ph: Dict[str, Any]) -> bool:
-    """Return True if missing any derivative."""
+def ensure_derivatives_missing(repo_root: Path, ph: Dict[str, Any]) -> bool:
     paths = ph.get("paths", {}) or {}
     thumb = paths.get("thumb")
     display = paths.get("display")
-    missing = False
     if isinstance(thumb, str) and not (repo_root / thumb).exists():
-        missing = True
+        return True
     if isinstance(display, str) and not (repo_root / display).exists():
-        missing = True
-    return missing
+        return True
+    return False
 
 
+# ----------------------------
+# Reset helpers
+# ----------------------------
+def reset_repo_state(repo_root: Path) -> None:
+    """
+    Destructive reset of generated photo artifacts + DB, with backups for JSON.
+    """
+    print("[reset] Resetting repo-generated state…")
+
+    # 1) wipe derivatives folders
+    for rel in [THUMBS_REL, DISPLAY_REL]:
+        d = repo_root / rel
+        if d.exists():
+            for f in d.glob("*.jpg"):
+                try:
+                    f.unlink()
+                except Exception:
+                    pass
+        d.mkdir(parents=True, exist_ok=True)
+
+    # 2) reset photos.json
+    photos_path = repo_root / DATA_REL
+    bak = backup_file(photos_path)
+    if bak:
+        print(f"[reset] Backed up {DATA_REL} -> {bak.name}")
+    save_json(photos_path, {"schemaVersion": 1, "generatedAt": now_iso(), "photos": []})
+    print(f"[reset] Wrote empty {DATA_REL}")
+
+    # 3) reset tags.json
+    tags_path = repo_root / TAGS_REL
+    bak2 = backup_file(tags_path)
+    if bak2:
+        print(f"[reset] Backed up {TAGS_REL} -> {bak2.name}")
+    save_json(tags_path, {"schemaVersion": 1, "generatedAt": now_iso(), "tags": []})
+    print(f"[reset] Wrote empty {TAGS_REL}")
+
+    print("[reset] Done.")
+
+
+# ----------------------------
+# Main
+# ----------------------------
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--originals", required=True, help="Path to folder containing original JPEG exports")
@@ -818,11 +859,16 @@ def main():
     ap.add_argument("--port", type=int, default=PORT)
     ap.add_argument("--no-tag", action="store_true",
                     help="Do not launch tagger UI. Backfill hashes/source fields and create missing derivatives.")
+    ap.add_argument("--reset", action="store_true",
+                    help="Destructive reset: clears assets/thumbs, assets/display, data/photos.json, data/tags.json (with backups), then runs ingest.")
     args = ap.parse_args()
 
     originals_dir = Path(args.originals).expanduser().resolve()
     repo_root = Path(args.repo_root).expanduser().resolve()
     ensure_dirs(repo_root)
+
+    if args.reset:
+        reset_repo_state(repo_root)
 
     photos_json_path = repo_root / DATA_REL
     photos_json = load_json(photos_json_path)
@@ -838,25 +884,22 @@ def main():
 
     # Build indexes from existing photos.json
     existing_ids = {ph.get("id") for ph in photos if isinstance(ph.get("id"), str)}
-    hash_to_photo = {}
-    legacy_fp_to_photo = {}  # (filename, size, mtime) -> photo
+
+    hash_to_photo: Dict[str, Dict[str, Any]] = {}
+    fp_to_photo: Dict[Tuple[str, int, int], Dict[str, Any]] = {}
     for ph in photos:
         src = ph.get("source", {}) or {}
-        h = src.get("hash")
-        if isinstance(h, str) and h:
-            hash_to_photo[h] = ph
+        if isinstance(src, dict):
+            h = src.get("hash")
+            if isinstance(h, str) and h:
+                hash_to_photo[h] = ph
+            ft = fingerprint_tuple_from_entry(src)
+            if ft:
+                fp_to_photo[ft] = ph
 
-        fn = src.get("originalFilename")
-        fp = src.get("fingerprint")
-        if isinstance(fn, str) and isinstance(fp, str):
-            size, mtime = parse_fingerprint(fp)
-            if size is not None and mtime is not None:
-                legacy_fp_to_photo[(fn, size, mtime)] = ph
-
-    # Precompute hashes for originals (with progress)
+    # Precompute hashes for originals (sha of ORIGINAL file bytes)
     originals_info: List[Tuple[Path, str, int, int, str]] = []
-    # tuple: (path, filename, size, mtime, hash)
-    print("[hash] Computing SHA-256 hashes (first run can take a bit)...")
+    print("[hash] Computing SHA-256 of original files...")
     for i, p in enumerate(originals, start=1):
         st = p.stat()
         h = sha256_file(p)
@@ -869,74 +912,64 @@ def main():
         print("[mode] --no-tag: backfilling metadata/hashes + creating missing derivatives (no UI)")
 
         updated = 0
-        created = 0
-        matched_original = 0
-        hashed_from_display = 0
+        regen = 0
+        upgraded = 0
         missing_original_matches = 0
 
-        # For faster lookup by original hash (sha256 of original file)
-        # Make tuple consistent: (p, fn, size, mtime, hash)
+        # quick lookups for originals
         hash_to_file = {h: (p, fn, size, mtime, h) for (p, fn, size, mtime, h) in originals_info}
+        fp_to_file = {(fn, size, mtime): (p, fn, size, mtime, h) for (p, fn, size, mtime, h) in originals_info}
 
-        # Build a quick lookup for filename+size+mtime -> (p, fn, size, mtime, hash)
-        fp_to_file = {}
-        for (p, fn, size, mtime, h) in originals_info:
-            fp_to_file[(fn, size, mtime)] = (p, fn, size, mtime, h)
-
-        # Backfill for existing entries
         for ph in photos:
             src = ph.get("source", {}) or {}
-            fn = src.get("originalFilename")
-            fp = src.get("fingerprint")
+            if not isinstance(src, dict):
+                src = {}
             pid = ph.get("id")
 
-            # 1) Try to match to an original file
+            # attempt to match an original
             file_tuple = None
 
-            # a) If entry already has a hash, try direct lookup
-            h = src.get("hash")
-            if isinstance(h, str) and h:
-                file_tuple = hash_to_file.get(h)
+            # A) by hash (if hashSource already original, try it)
+            h0 = src.get("hash")
+            hs0 = src.get("hashSource")
+            if isinstance(h0, str) and h0 and hs0 == "original":
+                file_tuple = hash_to_file.get(h0)
 
-            # b) Else try legacy fingerprint match (filename + size + mtime)
-            if not file_tuple and isinstance(fn, str) and isinstance(fp, str):
-                size0, mtime0 = parse_fingerprint(fp)
-                if size0 is not None and mtime0 is not None:
-                    file_tuple = fp_to_file.get((fn, size0, mtime0))
+            # B) by fingerprint (preferred upgrade path)
+            ft = fingerprint_tuple_from_entry(src)
+            if not file_tuple and ft:
+                file_tuple = fp_to_file.get(ft)
 
-            # 2) If matched to an original, backfill from original
+            # C) if hash exists but hashSource isn't original, still try lookup (maybe it already is)
+            if not file_tuple and isinstance(h0, str) and h0:
+                file_tuple = hash_to_file.get(h0)
+
             if file_tuple:
-                p, ffn, fsize, fmtime, fh = file_tuple
-                matched_original += 1
-
+                p, fn, size, mtime, h = file_tuple
                 changed = False
 
-                # Stable identity
-                if not src.get("hash"):
-                    src["hash"] = fh
-                    changed = True
-
-                # Mark hash source as original (optional but helpful)
-                if not src.get("hashSource"):
+                # upgrade identity to ORIGINAL hash
+                if src.get("hash") != h or src.get("hashSource") != "original":
+                    src["hash"] = h
                     src["hashSource"] = "original"
                     changed = True
+                    upgraded += 1
 
-                # Offline/original metadata
+                # metadata
+                src["originalFilename"] = fn
+                src["sizeBytes"] = size
+                src["mtime"] = mtime
+                src["fingerprint"] = f"size:{size}_mtime:{mtime}"
+                if not src.get("originalPathHint"):
+                    src["originalPathHint"] = str(p)
+                    changed = True
                 if not src.get("importedAt"):
                     src["importedAt"] = now_iso()
                     changed = True
 
-                src["originalFilename"] = ffn
-                src["sizeBytes"] = fsize
-                src["mtime"] = fmtime
-
-                if not src.get("originalPathHint"):
-                    src["originalPathHint"] = str(p)
-                    changed = True
-
                 ph["source"] = src
 
-                # EXIF merge: only fill blanks, don't overwrite existing values
+                # merge exif gaps
                 try:
                     img = safe_open_image(p)
                     ex = get_exif_fields(img)
@@ -949,8 +982,8 @@ def main():
                 except Exception:
                     pass
 
-                # Regenerate derivatives if missing
-                if ensure_derivatives_exist(repo_root, ph):
+                # regen derivatives if missing
+                if ensure_derivatives_missing(repo_root, ph):
                     if isinstance(pid, str) and pid:
                         thumb_rel, display_rel, ex = generate_derivatives(
                             repo_root, p, pid, args.thumb_long_edge, args.display_long_edge
@@ -958,67 +991,28 @@ def main():
                         ph.setdefault("paths", {})
                         ph["paths"]["thumb"] = thumb_rel
                         ph["paths"]["display"] = display_rel
-
+                        # merge exif
                         old = ph.get("exif", {}) or {}
                         merged = dict(old)
                         merged.update(ex)
                         ph["exif"] = merged
-                        created += 1
+                        regen += 1
 
                 if changed:
                     updated += 1
 
-                continue  # done with this photo entry
+                continue
 
-            # 3) Fallback: hash the DISPLAY derivative if we couldn't match originals
-            # This still gives stable identity for the site, and fixes filename collisions.
+            # If we couldn't match originals, do NOT overwrite a known original identity.
+            # Only keep existing info + ensure importedAt exists.
             missing_original_matches += 1
-
-            paths = ph.get("paths", {}) or {}
-            display_rel = paths.get("display")
-            disp_path = (repo_root / display_rel) if isinstance(display_rel, str) else None
-
-            changed = False
-            if disp_path and disp_path.exists():
-                if not src.get("hash"):
-                    src["hash"] = sha256_file(disp_path)
-                    changed = True
-                if not src.get("hashSource"):
-                    src["hashSource"] = "display"
-                    changed = True
-
-                # Use display file stats as a fallback (still useful)
-                try:
-                    st = disp_path.stat()
-                    src.setdefault("sizeBytes", st.st_size)
-                    src.setdefault("mtime", int(st.st_mtime))
-                except Exception:
-                    pass
-
-                if not src.get("importedAt"):
-                    src["importedAt"] = now_iso()
-                    changed = True
-
-                if not src.get("originalFilename"):
-                    # keep something meaningful even if unknown
-                    src["originalFilename"] = f"{pid}.jpg" if isinstance(pid, str) else "unknown.jpg"
-                    changed = True
-
-                hashed_from_display += 1
-            else:
-                # Can't even find display derivative; still ensure importedAt exists
-                if not src.get("importedAt"):
-                    src["importedAt"] = now_iso()
-                    changed = True
-
-            ph["source"] = src
-            if changed:
+            if not src.get("importedAt"):
+                src["importedAt"] = now_iso()
+                ph["source"] = src
                 updated += 1
 
-        # Ingest NEW files that aren't in photos.json by ORIGINAL hash
-        existing_hashes = {ph.get("source", {}).get("hash")
-                           for ph in photos
-                           if isinstance(ph.get("source", {}), dict)}
+        # add brand new files by original hash
+        existing_hashes = {ph.get("source", {}).get("hash") for ph in photos if isinstance(ph.get("source", {}), dict)}
         existing_hashes = {h for h in existing_hashes if isinstance(h, str) and h}
 
         new_files = 0
@@ -1026,7 +1020,6 @@ def main():
             if h in existing_hashes:
                 continue
 
-            # new photo: create entry with empty tags (no tagging)
             try:
                 img = safe_open_image(p)
                 exif = get_exif_fields(img)
@@ -1049,7 +1042,7 @@ def main():
                     "hashSource": "original",
                     "sizeBytes": size,
                     "mtime": mtime,
-                    "fingerprint": f"size:{size}_mtime:{mtime}",  # keep for legacy
+                    "fingerprint": f"size:{size}_mtime:{mtime}",
                     "originalPathHint": str(p),
                     "importedAt": now_iso(),
                 },
@@ -1059,19 +1052,16 @@ def main():
                 "tags": [],
             }
             photos.append(entry)
-            created += 1
             new_files += 1
 
         photos_json["photos"] = photos
 
-        # backup + write
         bak = backup_file(photos_json_path)
         if bak:
             print(f"[backup] Wrote {bak.name}")
         save_json(photos_json_path, photos_json)
         write_tag_index(repo_root, photos_json)
 
-        # validate at end
         report = validate_repo(repo_root, photos_json)
         print("\n=== VALIDATE (post --no-tag) ===")
         print(f"Errors: {len(report['errors'])}")
@@ -1086,15 +1076,11 @@ def main():
             print("  ...")
 
         print("\n=== BACKFILL STATS ===")
-        print(f"Matched originals: {matched_original}")
-        print(f"Hashed from display fallback: {hashed_from_display}")
-        print(f"Missing original matches: {missing_original_matches}")
+        print(f"Upgraded to original hash: {upgraded}")
         print(f"Updated entries: {updated}")
-        print(f"Created/regenerated derivative sets: {created}")
+        print(f"Regenerated derivative sets: {regen}")
         print(f"New files added (untagged): {new_files}")
-
-        if missing_original_matches:
-            print("[note] Entries hashed from display have source.hashSource='display'. If you later want true original hashes, rerun --no-tag pointing at the exact originals used at ingest.")
+        print(f"Entries not matchable to originals this run: {missing_original_matches}")
 
         sys.exit(0)
 
@@ -1102,12 +1088,83 @@ def main():
     existing_hashes = set(hash_to_photo.keys())
     pending: List[PendingItem] = []
 
-    print("[diff] Building queue of new photos (by hash)...")
+    upgraded_in_normal = 0
+    regenerated_in_normal = 0
+
+    print("[diff] Building queue of new photos (by hash; fallback by fingerprint upgrade)...")
     for (p, fn, size, mtime, h) in originals_info:
+        # Primary match: original hash already present
         if h in existing_hashes:
             continue
 
-        # create id based on EXIF date + filename
+        # Secondary match: legacy fingerprint match => upgrade existing entry rather than re-add
+        fp_key = (fn, size, mtime)
+        legacy_match = fp_to_photo.get(fp_key)
+        if legacy_match:
+            src = legacy_match.get("source", {}) or {}
+            if not isinstance(src, dict):
+                src = {}
+            changed = False
+
+            # Upgrade to original hash identity
+            if src.get("hash") != h or src.get("hashSource") != "original":
+                src["hash"] = h
+                src["hashSource"] = "original"
+                changed = True
+                upgraded_in_normal += 1
+
+            src["originalFilename"] = fn
+            src["sizeBytes"] = size
+            src["mtime"] = mtime
+            src["fingerprint"] = f"size:{size}_mtime:{mtime}"
+            if not src.get("originalPathHint"):
+                src["originalPathHint"] = str(p)
+                changed = True
+            if not src.get("importedAt"):
+                src["importedAt"] = now_iso()
+                changed = True
+
+            legacy_match["source"] = src
+
+            # merge exif gaps
+            try:
+                img = safe_open_image(p)
+                ex = get_exif_fields(img)
+                old = legacy_match.get("exif", {}) or {}
+                merged = dict(old)
+                for k, v in ex.items():
+                    if merged.get(k) is None and v is not None:
+                        merged[k] = v
+                legacy_match["exif"] = merged
+            except Exception:
+                pass
+
+            # regenerate derivatives if missing
+            pid = legacy_match.get("id")
+            if ensure_derivatives_missing(repo_root, legacy_match):
+                if isinstance(pid, str) and pid:
+                    thumb_rel, display_rel, ex = generate_derivatives(
+                        repo_root, p, pid, args.thumb_long_edge, args.display_long_edge
+                    )
+                    legacy_match.setdefault("paths", {})
+                    legacy_match["paths"]["thumb"] = thumb_rel
+                    legacy_match["paths"]["display"] = display_rel
+                    # exif merge
+                    old = legacy_match.get("exif", {}) or {}
+                    merged = dict(old)
+                    merged.update(ex)
+                    legacy_match["exif"] = merged
+                    regenerated_in_normal += 1
+
+            # Update indexes so subsequent files can match by hash
+            if changed:
+                existing_hashes.add(h)
+                hash_to_photo[h] = legacy_match
+
+            # Treat as already ingested (skip queue)
+            continue
+
+        # Otherwise: genuinely new file => queue for tagging
         try:
             img = safe_open_image(p)
             exif = get_exif_fields(img)
@@ -1118,16 +1175,18 @@ def main():
         pid = uniquify_id(candidate_id, existing_ids)
         existing_ids.add(pid)
 
-        thumb_rel, display_rel, ex = generate_derivatives(repo_root, p, pid,
-                                                         args.thumb_long_edge, args.display_long_edge)
+        thumb_rel, display_rel, ex = generate_derivatives(
+            repo_root, p, pid, args.thumb_long_edge, args.display_long_edge
+        )
 
         src = {
             "originalFilename": fn,
             "hash": h,
+            "hashSource": "original",
             "sizeBytes": size,
             "mtime": mtime,
-            "fingerprint": f"size:{size}_mtime:{mtime}",  # keep legacy
-            "originalPathHint": str(p),  # local only
+            "fingerprint": f"size:{size}_mtime:{mtime}",
+            "originalPathHint": str(p),
             "importedAt": now_iso(),
         }
 
@@ -1141,9 +1200,17 @@ def main():
             original_filename=fn
         ))
 
+    if upgraded_in_normal or regenerated_in_normal:
+        bak = backup_file(photos_json_path)
+        if bak:
+            print(f"[backup] Wrote {bak.name}")
+        save_json(photos_json_path, photos_json)
+        write_tag_index(repo_root, photos_json)
+        print(f"[upgrade] Upgraded {upgraded_in_normal} existing entries to original-hash identity.")
+        print(f"[upgrade] Regenerated {regenerated_in_normal} derivative sets during upgrade.")
+
     if not pending:
         print("[done] No new photos detected.")
-        # still update tag index + validate quick
         write_tag_index(repo_root, photos_json)
         report = validate_repo(repo_root, photos_json)
         print(f"[validate] Errors={len(report['errors'])} Warnings={len(report['warnings'])}")
