@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-15T19:29:19Z",
+  "generatedAt": "2026-03-01T18:48:44Z",
   "tags": [
     {
       "name": "acadia",
@@ -12,7 +12,7 @@
     },
     {
       "name": "bw",
-      "count": 107
+      "count": 115
     },
     {
       "name": "california",
@@ -28,11 +28,11 @@
     },
     {
       "name": "color",
-      "count": 526
+      "count": 536
     },
     {
       "name": "concert",
-      "count": 13
+      "count": 18
     },
     {
       "name": "czechia",
@@ -40,7 +40,7 @@
     },
     {
       "name": "digital",
-      "count": 532
+      "count": 550
     },
     {
       "name": "ez-controller",
@@ -76,7 +76,7 @@
     },
     {
       "name": "nyc",
-      "count": 125
+      "count": 143
     },
     {
       "name": "people",
@@ -92,7 +92,7 @@
     },
     {
       "name": "self",
-      "count": 35
+      "count": 36
     },
     {
       "name": "slow-shutter",
@@ -100,7 +100,7 @@
     },
     {
       "name": "snow",
-      "count": 23
+      "count": 30
     },
     {
       "name": "tree",
@@ -108,7 +108,7 @@
     },
     {
       "name": "x-t20",
-      "count": 460
+      "count": 478
     }
   ]
 }
